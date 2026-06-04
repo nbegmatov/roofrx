@@ -1,4 +1,4 @@
-name: Deploy to Runpod
+name: Deploy to IONOS
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: roofrx-runpod-deploy
+  group: roofrx-ionos-deploy
   cancel-in-progress: true
 
 jobs:
@@ -16,10 +16,10 @@ jobs:
     permissions:
       contents: read
     env:
-      RUNPOD_HOST: ${{ vars.RUNPOD_HOST }}
-      RUNPOD_USER: ${{ vars.RUNPOD_USER }}
-      RUNPOD_PORT: ${{ vars.RUNPOD_PORT || '22' }}
-      RUNPOD_PATH: ${{ vars.RUNPOD_PATH }}
+      IONOS_HOST: ${{ vars.IONOS_HOST }}
+      IONOS_USER: ${{ vars.IONOS_USER }}
+      IONOS_PORT: ${{ vars.IONOS_PORT || '22' }}
+      IONOS_PATH: ${{ vars.IONOS_PATH }}
     steps:
       - uses: actions/checkout@v4
 
@@ -34,17 +34,17 @@ jobs:
 
       - uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.RUNPOD_SSH_KEY }}
+          ssh-private-key: ${{ secrets.IONOS_SSH_KEY }}
 
       - run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -p "$RUNPOD_PORT" "$RUNPOD_HOST" >> ~/.ssh/known_hosts
+          ssh-keyscan -p "$IONOS_PORT" "$IONOS_HOST" >> ~/.ssh/known_hosts
 
       - run: |
-          ssh -p "$RUNPOD_PORT" "$RUNPOD_USER@$RUNPOD_HOST" "mkdir -p \"$RUNPOD_PATH\""
+          ssh -p "$IONOS_PORT" "$IONOS_USER@$IONOS_HOST" "mkdir -p \"$IONOS_PATH\""
 
       - run: |
-          rsync -az --delete -e "ssh -p $RUNPOD_PORT" \
+          rsync -az --delete -e "ssh -p $IONOS_PORT" \
             --exclude ".git/" \
             --exclude ".github/" \
             --exclude "node_modules/" \
@@ -54,4 +54,4 @@ jobs:
             --exclude "postcss.config.js" \
             --exclude "tailwind.config.js" \
             --exclude "README.md" \
-            ./ "$RUNPOD_USER@$RUNPOD_HOST:$RUNPOD_PATH/"
+            ./ "$IONOS_USER@$IONOS_HOST:$IONOS_PATH/"

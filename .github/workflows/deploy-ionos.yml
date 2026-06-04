@@ -34,6 +34,11 @@ jobs:
 
       - run: docker build -t roofrx:test .
 
+      - run: |
+          test -n "$IONOS_HOST" || { echo "Missing IONOS_HOST GitHub Actions variable"; exit 1; }
+          test -n "$IONOS_USER" || { echo "Missing IONOS_USER GitHub Actions variable"; exit 1; }
+          test -n "$IONOS_PATH" || { echo "Missing IONOS_PATH GitHub Actions variable"; exit 1; }
+
       - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.IONOS_SSH_KEY }}

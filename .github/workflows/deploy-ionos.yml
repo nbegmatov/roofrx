@@ -32,6 +32,8 @@ jobs:
 
       - run: npm run build:css
 
+      - run: docker build -t roofrx:test .
+
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.IONOS_SSH_KEY }}

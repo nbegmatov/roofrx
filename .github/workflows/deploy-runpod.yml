@@ -1,0 +1,57 @@
+name: Deploy to Runpod
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: roofrx-runpod-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      RUNPOD_HOST: ${{ vars.RUNPOD_HOST }}
+      RUNPOD_USER: ${{ vars.RUNPOD_USER }}
+      RUNPOD_PORT: ${{ vars.RUNPOD_PORT || '22' }}
+      RUNPOD_PATH: ${{ vars.RUNPOD_PATH }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build:css
+
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.RUNPOD_SSH_KEY }}
+
+      - run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "$RUNPOD_PORT" "$RUNPOD_HOST" >> ~/.ssh/known_hosts
+
+      - run: |
+          ssh -p "$RUNPOD_PORT" "$RUNPOD_USER@$RUNPOD_HOST" "mkdir -p \"$RUNPOD_PATH\""
+
+      - run: |
+          rsync -az --delete -e "ssh -p $RUNPOD_PORT" \
+            --exclude ".git/" \
+            --exclude ".github/" \
+            --exclude "node_modules/" \
+            --exclude "scripts/" \
+            --exclude "package.json" \
+            --exclude "package-lock.json" \
+            --exclude "postcss.config.js" \
+            --exclude "tailwind.config.js" \
+            --exclude "README.md" \
+            ./ "$RUNPOD_USER@$RUNPOD_HOST:$RUNPOD_PATH/"

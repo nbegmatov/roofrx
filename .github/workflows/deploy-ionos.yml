@@ -44,9 +44,11 @@ jobs:
           ssh -p "$IONOS_PORT" "$IONOS_USER@$IONOS_HOST" "mkdir -p \"$IONOS_PATH\""
 
       - run: |
-          rsync -az --delete -e "ssh -p $IONOS_PORT" \
+          rsync -rlptDz --delete --delete-excluded -e "ssh -p $IONOS_PORT" \
             --exclude ".git/" \
             --exclude ".github/" \
+            --exclude ".gitignore" \
+            --exclude ".prettierrc" \
             --exclude "node_modules/" \
             --exclude "scripts/" \
             --exclude "package.json" \

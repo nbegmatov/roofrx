@@ -1,0 +1,43 @@
+{
+  "index.html": {
+    "meta.title": "ProRoof — Full-Service Roofing in Colorado",
+    "meta.description": "Roof installation and repair, shingles and metal systems, waterproofing. Warranty-backed work and free estimates.",
+    "banner.eyebrow": "Trusted roofing since 2010",
+    "banner.h1": "Full-service roofing — from inspection to warranty",
+    "banner.lede": "Installation, repair, and insulation. Contract-based work with clear timelines and pricing.",
+    "banner.cta-quote": "Get a quote",
+    "banner.image": "images/bg1.jpg"
+  },
+  "about.html": {
+    "meta.title": "About Us — Colorado Roofing",
+    "meta.description": "Colorado Roofing: licensed crews, written warranties, and Front Range experience since 2009."
+  },
+  "contacts.html": {
+    "meta.title": "Contact — Colorado Roofing",
+    "meta.description": "Call, email, or request an estimate. Colorado Roofing serves the Front Range with inspections, installs, and storm response."
+  },
+  "service-areas.html": {
+    "meta.title": "Service Areas — Colorado Roofing",
+    "meta.description": "Roofing service areas across the Colorado Front Range: Denver, Springs, Fort Collins, Boulder, and more."
+  },
+  "portfolio.html": {
+    "meta.title": "Portfolio — Colorado Roofing | Completed Projects",
+    "meta.description": "Roofing project gallery: residential, commercial, metal and shingle systems across Colorado."
+  },
+  "services.html": {
+    "meta.title": "Roofing Services — Colorado Roofing",
+    "meta.description": "Residential, commercial, metal, flat, repair, and emergency roofing across Colorado. Free estimates and warranty-backed work."
+  },
+  "Privacy.html": {
+    "meta.title": "Privacy Policy — Intermountain Roofing",
+    "meta.description": "Privacy policy for Intermountain Roofing: how we handle contact information and website use."
+  },
+  "termofservice.html": {
+    "meta.title": "Terms of Service — Intermountain Roofing",
+    "meta.description": "Terms of service for using the Intermountain Roofing website and requesting estimates."
+  },
+  "terms.html": {
+    "meta.title": "Redirecting…",
+    "meta.description": ""
+  }
+}

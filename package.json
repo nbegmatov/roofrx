@@ -1,0 +1,26 @@
+{
+  "name": "roofing-site",
+  "private": true,
+  "scripts": {
+    "predev": "npm run build:css",
+    "dev": "concurrently -k -n css,web -c green,magenta \"npm run watch:css\" \"live-server . --port=5173 --open=/index.html --wait=200\"",
+    "watch:css": "node scripts/watch-css.mjs",
+    "build:css": "node scripts/build-css.mjs",
+    "content:apply": "node scripts/apply-editable.mjs",
+    "content:scan": "node scripts/scan-editable.mjs",
+    "build:css:index": "tailwindcss -i ./css/source.css -o ./css/pages/index.css --content ./index.html --minify",
+    "watch:css:all": "tailwindcss -i ./css/source.css -o ./css/pages/site.css --content './**/*.html' --watch",
+    "build:css:all": "tailwindcss -i ./css/source.css -o ./css/pages/site.css --content './**/*.html' --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "@tailwindcss/postcss": "^4.2.2",
+    "cheerio": "^1.2.0",
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.0",
+    "postcss": "^8.5.8",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.2"
+  }
+}

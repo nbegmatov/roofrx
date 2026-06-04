@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админка — контент сайта</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../css/pages/admin.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-800 antialiased font-sans inter-roof">
+  <div class="flex min-h-screen">
+    <aside class="w-56 shrink-0 border-r border-slate-200 bg-roof-900 text-slate-200">
+      <div class="border-b border-slate-700 p-4">
+        <p class="text-[10px] font-medium uppercase tracking-widest text-roof-accent">Локально</p>
+        <p class="text-sm font-medium text-white">Редактор</p>
+      </div>
+      <nav class="flex flex-col gap-1 p-2" id="nav-sections">
+        <button type="button" data-section="pages" class="nav-item w-full rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition-colors hover:bg-white/10">
+          Страницы
+        </button>
+        <button type="button" data-section="projects" class="nav-item w-full rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition-colors hover:bg-white/10">
+          Проекты
+        </button>
+        <button type="button" data-section="services" class="nav-item w-full rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition-colors hover:bg-white/10">
+          Услуги
+        </button>
+        <button type="button" data-section="inquiries" class="nav-item w-full rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition-colors hover:bg-white/10">
+          Обращение
+        </button>
+      </nav>
+      <div class="mt-auto border-t border-slate-700 p-3 text-xs text-slate-500">
+        <a href="../index.html" class="text-roof-accent hover:underline">Открыть сайт</a>
+      </div>
+    </aside>
+
+    <div class="flex min-w-0 flex-1 flex-col">
+      <header class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-white px-4 py-3 sm:px-6">
+        <p id="status" class="min-w-[200px] flex-1 text-sm text-slate-600" aria-live="polite"></p>
+        <button
+          type="button"
+          id="btn-download-json"
+          class="shrink-0 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-roof-accent hover:text-roof-accent"
+        >
+          Скачать editable.json
+        </button>
+      </header>
+
+      <div id="view-list" class="flex-1 overflow-auto p-4 sm:p-6">
+        <h1 id="list-heading" class="mb-4 text-xl font-medium text-roof-900">Страницы</h1>
+        <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <table class="w-full min-w-[640px] text-left text-sm">
+            <thead>
+              <tr id="table-head-row" class="border-b border-slate-200 bg-slate-50 text-xs font-medium uppercase tracking-wide text-slate-500">
+                <th class="px-4 py-3">Название</th>
+                <th class="px-4 py-3">URL</th>
+                <th class="px-4 py-3">Последняя генерация</th>
+                <th class="px-4 py-3 w-36"></th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="view-edit" class="hidden flex-1 overflow-auto p-4 sm:p-6">
+        <div class="mb-6 flex flex-wrap items-center gap-3">
+          <button type="button" id="btn-back" class="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-roof-accent hover:text-roof-accent">
+            ← К списку
+          </button>
+          <h1 id="edit-heading" class="text-xl font-medium text-roof-900"></h1>
+        </div>
+        <p class="mb-2 text-xs text-slate-500">Файл: <code id="edit-file" class="rounded bg-slate-200/80 px-1.5"></code></p>
+
+        <div class="max-w-3xl space-y-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+          <div id="edit-text-block">
+            <h2 class="mb-3 text-sm font-medium uppercase tracking-wide text-slate-500">Тексты</h2>
+            <div id="edit-text-fields" class="space-y-4"></div>
+          </div>
+          <div id="edit-image-block">
+            <h2 class="mb-3 text-sm font-medium uppercase tracking-wide text-slate-500">Изображения</h2>
+            <p class="mb-3 text-xs text-slate-500">
+              Путь от корня сайта (например <code class="text-xs">images/bg1.jpg</code>). Превью по URL. Файл с диска — только локальный предпросмотр; скопируйте его в
+              <code class="text-xs">images/uploads/</code> и подставьте путь кнопкой ниже.
+            </p>
+            <div id="edit-image-fields" class="space-y-6"></div>
+          </div>
+          <div class="flex flex-wrap gap-3 border-t border-slate-100 pt-6">
+            <button type="button" id="btn-save-page" class="rounded-xl bg-roof-accent px-6 py-3 text-sm font-medium text-white shadow-md shadow-roof-accent/25 hover:bg-roof-accent-hover">
+              Сохранить страницу в JSON (скачать)
+            </button>
+          </div>
+          <p class="mt-3 text-xs text-slate-500">
+            Замените файл <code class="text-xs">content/editable.json</code> скачанным и выполните в терминале:
+            <code class="text-xs">npm run content:apply</code>
+          </p>
+        </div>
+      </div>
+
+      <div id="view-inquiry" class="hidden flex-1 overflow-auto p-4 sm:p-6">
+        <div class="mb-6 flex flex-wrap items-center gap-3">
+          <button type="button" id="btn-back-inquiry" class="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:border-roof-accent hover:text-roof-accent">
+            ← К списку обращений
+          </button>
+          <h1 id="inquiry-heading" class="text-xl font-medium text-roof-900"></h1>
+        </div>
+        <p class="mb-2 text-xs text-slate-500">ID: <code id="inquiry-id" class="rounded bg-slate-200/80 px-1.5 font-mono"></code></p>
+        <div class="max-w-3xl space-y-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+          <dl id="inquiry-fields" class="space-y-4 text-sm"></dl>
+          <p class="border-t border-slate-100 pt-4 text-xs text-slate-500">
+            Данные примера из <code class="text-xs">content/inquiries-sample.json</code>. Приём заявок с сайта и статусы обработки будут подключены позже.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var currentSection = 'pages';
+      var sectionsData = null;
+      var editingFile = null;
+      var schema = null;
+      var editableData = {};
+
+      var viewList = document.getElementById('view-list');
+      var viewEdit = document.getElementById('view-edit');
+      var tableBody = document.getElementById('table-body');
+      var listHeading = document.getElementById('list-heading');
+      var statusEl = document.getElementById('status');
+      var navItems = document.querySelectorAll('.nav-item');
+      var tableHeadRow = document.getElementById('table-head-row');
+      var viewInquiry = document.getElementById('view-inquiry');
+      var inquiriesData = [];
+
+      function siteBase() {
+        var m = location.pathname.match(/^(.*)\/admin(?:\/|$)/i);
+        return m ? m[1] : '';
+      }
+
+      function urlFromRoot(rel) {
+        rel = String(rel).replace(/^\//, '');
+        var b = siteBase();
+        return (b || '') + '/' + rel;
+      }
+
+      function setStatus(msg, kind) {
+        statusEl.textContent = msg || '';
+        statusEl.className =
+          'min-w-[200px] flex-1 text-sm ' +
+          (kind === 'err' ? 'text-red-600' : kind === 'ok' ? 'text-emerald-700' : 'text-slate-600');
+      }
+
+      function sectionLabel(id) {
+        if (id === 'pages') return 'Страницы';
+        if (id === 'projects') return 'Проекты';
+        if (id === 'services') return 'Услуги';
+        if (id === 'inquiries') return 'Обращения';
+        return id;
+      }
+
+      function inquiryStatusLabel(s) {
+        if (s === 'new') return 'Новое';
+        if (s === 'in_progress') return 'В работе';
+        if (s === 'done') return 'Закрыто';
+        return s ? String(s) : '—';
+      }
+
+      function inquiryContactCell(row) {
+        var parts = [];
+        if (row.email) parts.push(row.email);
+        if (row.phone) parts.push(row.phone);
+        return parts.length ? parts.join(' · ') : '—';
+      }
+
+      function formatDate(iso) {
+        if (!iso) return '—';
+        try {
+          var d = new Date(iso);
+          return isNaN(d.getTime()) ? '—' : d.toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' });
+        } catch (e) {
+          return '—';
+        }
+      }
+
+      function assetUrl(relPath) {
+        if (!relPath) return '';
+        var p = String(relPath).replace(/^\//, '');
+        return urlFromRoot(p);
+      }
+
+      function mergePageMeta(sections, pageMeta) {
+        sections.forEach(function (sec) {
+          sec.rows.forEach(function (row) {
+            row.lastGenerated = pageMeta[row.file] || null;
+          });
+        });
+      }
+
+      function downloadJson(filename, obj) {
+        var blob = new Blob([JSON.stringify(obj, null, 2) + '\n'], { type: 'application/json' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+
+      function rowTitleForFile(file) {
+        if (!sectionsData) return file;
+        for (var i = 0; i < sectionsData.sections.length; i++) {
+          var rows = sectionsData.sections[i].rows;
+          for (var j = 0; j < rows.length; j++) {
+            if (rows[j].file === file) return rows[j].title;
+          }
+        }
+        return file;
+      }
+
+      function parseSchema(html, relFile) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var values = editableData[relFile] || {};
+        var textFields = [];
+        var seen = new Set();
+
+        function pushText(key, label, value) {
+          if (seen.has(key)) return;
+          seen.add(key);
+          textFields.push({ key: key, label: label, value: value == null ? '' : String(value) });
+        }
+
+        var titleEl = doc.querySelector('title');
+        pushText(
+          'meta.title',
+          'SEO: заголовок (title)',
+          values['meta.title'] != null ? values['meta.title'] : (titleEl ? titleEl.textContent.trim() : ''),
+        );
+        var metaDesc = doc.querySelector('meta[name="description"]');
+        pushText(
+          'meta.description',
+          'SEO: описание (meta description)',
+          values['meta.description'] != null
+            ? values['meta.description']
+            : metaDesc
+              ? metaDesc.getAttribute('content') || ''
+              : '',
+        );
+
+        doc.querySelectorAll('[data-editable]').forEach(function (el) {
+          var key = el.getAttribute('data-editable');
+          if (!key || seen.has(key)) return;
+          seen.add(key);
+          var label = el.getAttribute('data-editable-label') || key;
+          var val = values[key] != null ? String(values[key]) : el.textContent.trim();
+          textFields.push({ key: key, label: label, value: val });
+        });
+
+        var imageFields = [];
+        doc.querySelectorAll('[data-editable-src]').forEach(function (el) {
+          var key = el.getAttribute('data-editable-src');
+          if (!key) return;
+          var label = el.getAttribute('data-editable-label') || key;
+          var val = values[key] != null ? String(values[key]) : (el.getAttribute('src') || '').trim();
+          imageFields.push({ key: key, label: label, value: val });
+        });
+
+        return {
+          file: relFile,
+          title: rowTitleForFile(relFile),
+          textFields: textFields,
+          imageFields: imageFields,
+        };
+      }
+
+      function showList() {
+        viewList.classList.remove('hidden');
+        viewEdit.classList.add('hidden');
+        viewInquiry.classList.add('hidden');
+        editingFile = null;
+        schema = null;
+      }
+
+      function showEdit() {
+        viewList.classList.add('hidden');
+        viewEdit.classList.remove('hidden');
+        viewInquiry.classList.add('hidden');
+      }
+
+      function showInquiryView() {
+        viewList.classList.add('hidden');
+        viewEdit.classList.add('hidden');
+        viewInquiry.classList.remove('hidden');
+      }
+
+      function renderPagesTable() {
+        if (!sectionsData) return;
+        tableHeadRow.innerHTML =
+          '<th class="px-4 py-3">Название</th>' +
+          '<th class="px-4 py-3">URL</th>' +
+          '<th class="px-4 py-3">Последняя генерация</th>' +
+          '<th class="px-4 py-3 w-36"></th>';
+        var sec = sectionsData.sections.find(function (s) {
+          return s.id === currentSection;
+        });
+        listHeading.textContent = sectionLabel(currentSection);
+        tableBody.innerHTML = '';
+        if (!sec || !sec.rows.length) {
+          tableBody.innerHTML = '<tr><td colspan="4" class="px-4 py-6 text-slate-500">Нет страниц.</td></tr>';
+          return;
+        }
+        sec.rows.forEach(function (row) {
+          var tr = document.createElement('tr');
+          tr.className = 'border-b border-slate-100 last:border-0';
+          tr.innerHTML =
+            '<td class="px-4 py-3 font-medium text-roof-900">' +
+            escapeHtml(row.title) +
+            '</td>' +
+            '<td class="px-4 py-3 font-mono text-xs text-slate-600">' +
+            escapeHtml(row.url) +
+            '</td>' +
+            '<td class="px-4 py-3 text-slate-600">' +
+            escapeHtml(formatDate(row.lastGenerated)) +
+            '</td>' +
+            '<td class="px-4 py-3">' +
+            '<button type="button" class="btn-edit rounded-lg bg-roof-accent px-3 py-1.5 text-xs font-medium text-white hover:bg-roof-accent-hover" data-file="' +
+            escapeAttr(row.file) +
+            '">Редактировать</button></td>';
+          tableBody.appendChild(tr);
+        });
+      }
+
+      function renderInquiriesTable() {
+        tableHeadRow.innerHTML =
+          '<th class="px-4 py-3">Дата</th>' +
+          '<th class="px-4 py-3">Имя</th>' +
+          '<th class="px-4 py-3">Контакт</th>' +
+          '<th class="px-4 py-3">Тема</th>' +
+          '<th class="px-4 py-3">Статус</th>' +
+          '<th class="px-4 py-3 w-36"></th>';
+        listHeading.textContent = sectionLabel('inquiries');
+        tableBody.innerHTML = '';
+        if (!inquiriesData.length) {
+          tableBody.innerHTML =
+            '<tr><td colspan="6" class="px-4 py-6 text-slate-500">Пока нет обращений.</td></tr>';
+          return;
+        }
+        var rows = inquiriesData.slice().sort(function (a, b) {
+          var ta = new Date(a.createdAt || 0).getTime();
+          var tb = new Date(b.createdAt || 0).getTime();
+          return tb - ta;
+        });
+        rows.forEach(function (row) {
+          var tr = document.createElement('tr');
+          tr.className = 'border-b border-slate-100 last:border-0';
+          tr.innerHTML =
+            '<td class="px-4 py-3 whitespace-nowrap text-slate-600">' +
+            escapeHtml(formatDate(row.createdAt)) +
+            '</td>' +
+            '<td class="px-4 py-3 font-medium text-roof-900">' +
+            escapeHtml(row.name || '—') +
+            '</td>' +
+            '<td class="max-w-[200px] truncate px-4 py-3 text-xs text-slate-600" title="' +
+            escapeAttr(inquiryContactCell(row)) +
+            '">' +
+            escapeHtml(inquiryContactCell(row)) +
+            '</td>' +
+            '<td class="max-w-xs px-4 py-3 text-slate-700">' +
+            escapeHtml(row.subject || '—') +
+            '</td>' +
+            '<td class="px-4 py-3 text-slate-600">' +
+            escapeHtml(inquiryStatusLabel(row.status)) +
+            '</td>' +
+            '<td class="px-4 py-3">' +
+            '<button type="button" class="btn-inquiry-open rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-roof-accent hover:text-roof-accent" data-id="' +
+            escapeAttr(row.id) +
+            '">Открыть</button></td>';
+          tableBody.appendChild(tr);
+        });
+      }
+
+      function renderTable() {
+        if (currentSection === 'inquiries') {
+          renderInquiriesTable();
+          return;
+        }
+        renderPagesTable();
+      }
+
+      function inquiryDetailRow(label, value) {
+        var v = value != null && String(value).trim() !== '' ? String(value) : '—';
+        return (
+          '<div class="border-b border-slate-100 pb-3">' +
+          '<dt class="mb-1 text-xs font-medium uppercase tracking-wide text-slate-500">' +
+          escapeHtml(label) +
+          '</dt>' +
+          '<dd class="text-slate-800">' +
+          (v === '—' ? '—' : escapeHtml(v)) +
+          '</dd></div>'
+        );
+      }
+
+      function openInquiryDetail(id) {
+        var item = null;
+        for (var i = 0; i < inquiriesData.length; i++) {
+          if (inquiriesData[i].id === id) {
+            item = inquiriesData[i];
+            break;
+          }
+        }
+        if (!item) return;
+        document.getElementById('inquiry-heading').textContent = item.subject || 'Обращение';
+        document.getElementById('inquiry-id').textContent = item.id;
+        var wrap = document.getElementById('inquiry-fields');
+        wrap.innerHTML =
+          inquiryDetailRow('Дата', formatDate(item.createdAt)) +
+          inquiryDetailRow('Статус', inquiryStatusLabel(item.status)) +
+          inquiryDetailRow('Имя', item.name) +
+          inquiryDetailRow('Email', item.email) +
+          inquiryDetailRow('Телефон', item.phone) +
+          inquiryDetailRow('Источник формы', item.source) +
+          inquiryDetailRow('Тема', item.subject) +
+          '<div class="pb-1">' +
+          '<dt class="mb-1 text-xs font-medium uppercase tracking-wide text-slate-500">Сообщение</dt>' +
+          '<dd class="whitespace-pre-wrap rounded-xl bg-slate-50 p-4 text-slate-800">' +
+          (item.message && String(item.message).trim()
+            ? escapeHtml(item.message)
+            : '<span class="text-slate-400">—</span>') +
+          '</dd></div>';
+        showInquiryView();
+        setStatus('', 'ok');
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function escapeAttr(s) {
+        return String(s).replace(/"/g, '&quot;');
+      }
+
+      function loadInitialData() {
+        setStatus('Загрузка…');
+        Promise.all([
+          fetch(urlFromRoot('content/pages-index.json')).then(function (r) {
+            if (!r.ok) throw new Error('pages-index: ' + r.status);
+            return r.json();
+          }),
+          fetch(urlFromRoot('content/page-meta.json')).then(function (r) {
+            return r.ok ? r.json() : {};
+          }),
+          fetch(urlFromRoot('content/editable.json')).then(function (r) {
+            return r.ok ? r.json() : {};
+          }),
+          fetch(urlFromRoot('content/inquiries-sample.json')).then(function (r) {
+            return r.ok ? r.json() : { inquiries: [] };
+          }),
+        ])
+          .then(function (arr) {
+            var idx = arr[0];
+            var meta = arr[1] || {};
+            editableData = arr[2] && typeof arr[2] === 'object' ? arr[2] : {};
+            var inqPayload = arr[3];
+            inquiriesData =
+              inqPayload && Array.isArray(inqPayload.inquiries) ? inqPayload.inquiries : [];
+            mergePageMeta(idx.sections, meta);
+            sectionsData = idx;
+            renderTable();
+            setStatus('Админка на том же порту, что и сайт (например /admin/index.html).', 'ok');
+          })
+          .catch(function (e) {
+            setStatus('Ошибка: ' + e.message, 'err');
+          });
+      }
+
+      navItems.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          showList();
+          currentSection = btn.getAttribute('data-section');
+          navItems.forEach(function (b) {
+            b.classList.toggle('is-active', b === btn);
+          });
+          renderTable();
+        });
+      });
+
+      document.getElementById('table-body').addEventListener('click', function (e) {
+        var editBtn = e.target.closest('.btn-edit');
+        if (editBtn) {
+          openEditor(editBtn.getAttribute('data-file'));
+          return;
+        }
+        var inqBtn = e.target.closest('.btn-inquiry-open');
+        if (inqBtn) {
+          openInquiryDetail(inqBtn.getAttribute('data-id'));
+        }
+      });
+
+      document.getElementById('btn-back-inquiry').addEventListener('click', function () {
+        showList();
+        renderTable();
+      });
+
+      function revokeBlob(div) {
+        if (div._blobUrl) {
+          URL.revokeObjectURL(div._blobUrl);
+          div._blobUrl = null;
+        }
+      }
+
+      function openEditor(file) {
+        editingFile = file;
+        setStatus('Загрузка полей…');
+        fetch(urlFromRoot(file))
+          .then(function (r) {
+            if (!r.ok) throw new Error(r.statusText);
+            return r.text();
+          })
+          .then(function (html) {
+            var s = parseSchema(html, file);
+            schema = s;
+            document.getElementById('edit-heading').textContent = s.title || file;
+            document.getElementById('edit-file').textContent = file;
+            var textWrap = document.getElementById('edit-text-fields');
+            var imgWrap = document.getElementById('edit-image-fields');
+            textWrap.innerHTML = '';
+            imgWrap.innerHTML = '';
+
+            s.textFields.forEach(function (f) {
+              var div = document.createElement('div');
+              div.innerHTML =
+                '<label class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-500">' +
+                escapeHtml(f.label) +
+                '</label>' +
+                '<textarea rows="' +
+                (f.key.indexOf('meta.description') === 0 ? '4' : '3') +
+                '" class="field-text w-full resize-y rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-roof-accent focus:ring-2 focus:ring-roof-accent/20" data-key="' +
+                escapeAttr(f.key) +
+                '"></textarea>';
+              div.querySelector('.field-text').value = f.value;
+              textWrap.appendChild(div);
+            });
+
+            if (!s.imageFields.length) {
+              document.getElementById('edit-image-block').classList.add('hidden');
+            } else {
+              document.getElementById('edit-image-block').classList.remove('hidden');
+              s.imageFields.forEach(function (f) {
+                var div = document.createElement('div');
+                div.className = 'rounded-xl border border-slate-100 bg-slate-50/80 p-4';
+                div.innerHTML =
+                  '<label class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-500">' +
+                  escapeHtml(f.label) +
+                  ' <span class="font-mono font-normal normal-case text-slate-400">(' +
+                  escapeHtml(f.key) +
+                  ')</span></label>' +
+                  '<div class="mb-2 flex flex-wrap items-start gap-4">' +
+                  '<div class="img-preview-wrap min-h-[80px] min-w-[120px] max-w-xs overflow-hidden rounded-lg border border-slate-200 bg-slate-100"></div>' +
+                  '<div class="min-w-0 flex-1 space-y-2">' +
+                  '<input type="text" class="field-img-path w-full rounded-xl border border-slate-200 px-3 py-2 text-sm font-mono outline-none focus:border-roof-accent" data-key="' +
+                  escapeAttr(f.key) +
+                  '" placeholder="images/…" />' +
+                  '<input type="file" accept="image/*" class="field-img-file block w-full text-xs text-slate-600" data-key="' +
+                  escapeAttr(f.key) +
+                  '" />' +
+                  '<p class="field-img-suggest text-xs text-slate-500"></p>' +
+                  '<button type="button" class="field-img-use-path rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-600 hover:border-roof-accent">Подставить путь для выбранного файла</button>' +
+                  '</div></div>';
+                var pathInp = div.querySelector('.field-img-path');
+                pathInp.value = f.value || '';
+                var prev = div.querySelector('.img-preview-wrap');
+                var suggestEl = div.querySelector('.field-img-suggest');
+                var usePathBtn = div.querySelector('.field-img-use-path');
+                var fileInp = div.querySelector('.field-img-file');
+                var lastSuggest = '';
+
+                function refreshPreview() {
+                  revokeBlob(div);
+                  var p = pathInp.value.trim();
+                  prev.innerHTML = '';
+                  prev.classList.remove('text-xs', 'text-slate-400', 'p-2');
+                  if (!p) return;
+                  var im = document.createElement('img');
+                  im.src = assetUrl(p);
+                  im.alt = '';
+                  im.className = 'max-h-40 w-auto object-contain';
+                  im.onerror = function () {
+                    prev.textContent = 'Нет превью';
+                    prev.classList.add('text-xs', 'text-slate-400', 'p-2');
+                  };
+                  prev.appendChild(im);
+                }
+
+                pathInp.addEventListener('input', refreshPreview);
+
+                fileInp.addEventListener('change', function (ev) {
+                  var inp = ev.target;
+                  revokeBlob(div);
+                  prev.innerHTML = '';
+                  suggestEl.textContent = '';
+                  lastSuggest = '';
+                  if (!inp.files || !inp.files[0]) return;
+                  var f0 = inp.files[0];
+                  var safe = f0.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                  lastSuggest = 'images/uploads/' + safe;
+                  suggestEl.textContent = 'Рекомендуемый путь: ' + lastSuggest;
+                  var u = URL.createObjectURL(f0);
+                  div._blobUrl = u;
+                  var im = document.createElement('img');
+                  im.src = u;
+                  im.alt = '';
+                  im.className = 'max-h-40 w-auto object-contain';
+                  prev.appendChild(im);
+                });
+
+                usePathBtn.addEventListener('click', function () {
+                  if (!lastSuggest) {
+                    setStatus('Сначала выберите файл.', 'err');
+                    return;
+                  }
+                  pathInp.value = lastSuggest;
+                  refreshPreview();
+                  setStatus('', 'ok');
+                });
+
+                refreshPreview();
+                imgWrap.appendChild(div);
+              });
+            }
+
+            showEdit();
+            setStatus('', 'ok');
+          })
+          .catch(function (e) {
+            setStatus('Ошибка: ' + e.message, 'err');
+          });
+      }
+
+      document.getElementById('btn-back').addEventListener('click', showList);
+
+      document.getElementById('btn-download-json').addEventListener('click', function () {
+        downloadJson('editable.json', editableData);
+        setStatus('Скачан editable.json — положите в content/ и выполните npm run content:apply', 'ok');
+      });
+
+      document.getElementById('btn-save-page').addEventListener('click', function () {
+        if (!editingFile || !schema) return;
+        var fields = {};
+        document.querySelectorAll('.field-text').forEach(function (ta) {
+          fields[ta.getAttribute('data-key')] = ta.value;
+        });
+        document.querySelectorAll('.field-img-path').forEach(function (inp) {
+          fields[inp.getAttribute('data-key')] = inp.value;
+        });
+        editableData[editingFile] = fields;
+        downloadJson('editable.json', editableData);
+        setStatus('Скачан editable.json с правками этой страницы. Замените content/editable.json и npm run content:apply', 'ok');
+      });
+
+      navItems[0].classList.add('is-active');
+      loadInitialData();
+    })();
+  </script>
+</body>
+</html>

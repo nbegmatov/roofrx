@@ -1,0 +1,157 @@
+{
+  "sections": [
+    {
+      "id": "pages",
+      "label": "Страницы",
+      "rows": [
+        {
+          "file": "index.html",
+          "title": "Главная",
+          "url": "/index.html"
+        },
+        {
+          "file": "about.html",
+          "title": "О нас",
+          "url": "/about.html"
+        },
+        {
+          "file": "contacts.html",
+          "title": "Контакты",
+          "url": "/contacts.html"
+        },
+        {
+          "file": "service-areas.html",
+          "title": "Зона обслуживания",
+          "url": "/service-areas.html"
+        },
+        {
+          "file": "portfolio.html",
+          "title": "Портфолио",
+          "url": "/portfolio.html"
+        },
+        {
+          "file": "services.html",
+          "title": "Услуги (обзор)",
+          "url": "/services.html"
+        },
+        {
+          "file": "Privacy.html",
+          "title": "Политика конфиденциальности",
+          "url": "/Privacy.html"
+        },
+        {
+          "file": "termofservice.html",
+          "title": "Условия использования",
+          "url": "/termofservice.html"
+        },
+        {
+          "file": "terms.html",
+          "title": "Редирект на условия (terms)",
+          "url": "/terms.html"
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "label": "Проекты",
+      "rows": [
+        {
+          "file": "portfolio.html",
+          "title": "Портфолио",
+          "url": "/portfolio.html"
+        },
+        {
+          "file": "projects/business-plaza-denver.html",
+          "title": "Business plaza — Denver | Portfolio | Colorado Roofing",
+          "url": "/projects/business-plaza-denver.html"
+        },
+        {
+          "file": "projects/custom-home-boulder.html",
+          "title": "Custom home — Boulder | Portfolio | Colorado Roofing",
+          "url": "/projects/custom-home-boulder.html"
+        },
+        {
+          "file": "projects/epdm-warehouse-fort-collins.html",
+          "title": "EPDM warehouse — Fort Collins | Portfolio | Colorado Roofing",
+          "url": "/projects/epdm-warehouse-fort-collins.html"
+        },
+        {
+          "file": "projects/industrial-greeley.html",
+          "title": "Industrial facility — Greeley | Portfolio | Colorado Roofing",
+          "url": "/projects/industrial-greeley.html"
+        },
+        {
+          "file": "projects/major-retrofit-pueblo.html",
+          "title": "Major retrofit — Pueblo | Portfolio | Colorado Roofing",
+          "url": "/projects/major-retrofit-pueblo.html"
+        },
+        {
+          "file": "projects/new-roof-colorado-springs.html",
+          "title": "New roof system — Colorado Springs | Portfolio | Colorado Roofing",
+          "url": "/projects/new-roof-colorado-springs.html"
+        },
+        {
+          "file": "projects/post-storm-lakewood.html",
+          "title": "Post-storm repair — Lakewood | Portfolio | Colorado Roofing",
+          "url": "/projects/post-storm-lakewood.html"
+        },
+        {
+          "file": "projects/standing-seam-aurora.html",
+          "title": "Standing seam metal — Aurora | Portfolio | Colorado Roofing",
+          "url": "/projects/standing-seam-aurora.html"
+        },
+        {
+          "file": "projects/townhome-westminster.html",
+          "title": "Townhome row — Westminster | Portfolio | Colorado Roofing",
+          "url": "/projects/townhome-westminster.html"
+        },
+        {
+          "file": "services.html",
+          "title": "Услуги (обзор)",
+          "url": "/services.html"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Услуги",
+      "rows": [
+        {
+          "file": "services.html",
+          "title": "Услуги (обзор)",
+          "url": "/services.html"
+        },
+        {
+          "file": "services/commercial.html",
+          "title": "Услуга: коммерция",
+          "url": "/services/commercial.html"
+        },
+        {
+          "file": "services/emergency.html",
+          "title": "Услуга: аварийные работы",
+          "url": "/services/emergency.html"
+        },
+        {
+          "file": "services/flat.html",
+          "title": "Услуга: плоская кровля",
+          "url": "/services/flat.html"
+        },
+        {
+          "file": "services/metal.html",
+          "title": "Услуга: металл",
+          "url": "/services/metal.html"
+        },
+        {
+          "file": "services/repair.html",
+          "title": "Услуга: ремонт",
+          "url": "/services/repair.html"
+        },
+        {
+          "file": "services/residential.html",
+          "title": "Услуга: жилые кровли",
+          "url": "/services/residential.html"
+        }
+      ]
+    }
+  ]
+}

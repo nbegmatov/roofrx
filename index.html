@@ -1,0 +1,754 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProRoof — Full-Service Roofing in Colorado</title>
+  <meta name="description" content="Roof installation and repair, shingles and metal systems, waterproofing. Warranty-backed work and free estimates.">
+  <link rel="stylesheet" href="css/pages/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">
+
+</head>
+
+
+
+<body class="bg-slate-50 text-slate-800 antialiased font-sans inter-roof">
+
+<!-- header -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-3 h-20 md:h-24 overflow-hidden">
+            
+            <div class="min-w-0 flex-shrink-0">
+                <a href="index.html#banner" class="block">
+                    <img src="images/logo_horizontal_words.svg" alt="Intermountain Roofing" class="h-full w-auto object-contain">
+                </a>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-x-10">
+                <a href="index.html#banner" class="text-[15px] font-medium text-slate-800 hover:text-roof-accent transition-colors">Home</a>
+                <a href="portfolio.html" class="text-[15px] font-medium text-slate-800 hover:text-roof-accent transition-colors">Portfolio</a>
+                <a href="services.html" class="text-[15px] font-medium text-slate-800 hover:text-roof-accent transition-colors">Services</a>
+                <a href="contacts.html" class="text-[15px] font-medium text-slate-800 hover:text-roof-accent transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex min-w-0 shrink items-center justify-end gap-2 sm:gap-4 md:gap-10">
+                <div class="hidden md:flex flex-col text-right">
+                    <span class="text-[10px] uppercase tracking-widest text-slate-400 font-medium mb-0.5">Call now:</span>
+                    <a href="tel:+78001234567" class="text-xl font-extrabold text-slate-900 hover:text-roof-accent transition-colors tracking-tight">
+                        8 800 123 45 67
+                    </a>
+                </div>
+
+                <button type="button" data-open-modal="estimate" data-modal-title="Free estimate" class="inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap rounded-xl bg-roof-accent px-3 py-2.5 text-[11px] font-medium uppercase tracking-wider text-white transition-all hover:shadow-lg hover:brightness-105 active:scale-95 sm:px-6 sm:py-3.5 sm:text-sm md:px-8 md:py-4">
+                    <span class="sm:hidden">Estimate</span>
+                    <span class="hidden sm:inline">Free Estimate</span>
+                </button>
+
+                <button type="button" class="lg:hidden p-2 text-slate-900" aria-label="Menu">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</header>
+<!--/header-->
+
+<!-- banner -->
+<div id="banner" class="pt-16 md:pt-20">
+    <div class="relative flex min-h-[calc(100svh-5rem)] items-center overflow-hidden sm:min-h-[min(100svh,34rem)] md:min-h-[37.5rem] lg:min-h-[40rem]">
+        <img src="images/bg1.jpg" alt="Residential roof against a Colorado sky" width="1920" height="1080" decoding="async" class="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_22%] sm:object-center" data-editable-src="banner.image" data-editable-label="Banner background image">
+
+        <div class="absolute inset-0 z-[1] bg-gradient-to-b from-roof-900/95 via-roof-900/78 to-roof-900/55 sm:bg-gradient-to-r sm:from-roof-900 sm:via-roof-900/85 sm:to-roof-900/40"></div>
+
+        <div class="relative z-10 mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 md:py-16 lg:px-8 lg:py-20">
+            <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-roof-accent sm:mb-4 sm:text-sm" data-editable="banner.eyebrow">Trusted roofing since 2010</p>
+
+            <h1 class="mb-4 max-w-3xl text-2xl font-medium leading-[1.12] text-white sm:mb-5 sm:text-3xl sm:leading-tight md:mb-6 md:text-5xl lg:text-6xl" data-editable="banner.h1">Full-service roofing — from inspection to warranty</h1>
+
+            <p class="mb-8 max-w-xl text-base leading-relaxed text-slate-300 sm:mb-10 sm:text-lg" data-editable="banner.lede">Installation, repair, and insulation. Contract-based work with clear timelines and pricing.</p>
+
+            <div class="flex max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 md:gap-6">
+                <button type="button" data-open-modal="estimate" data-modal-title="Get a quote" class="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-white px-6 py-3.5 text-[15px] font-semibold text-roof-900 shadow-lg transition-colors hover:bg-amber-100 sm:w-auto sm:px-8 sm:py-4">
+                    <span data-editable="banner.cta-quote">Get a quote</span>
+                </button>
+
+                <a href="portfolio.html" class="inline-flex min-h-[44px] w-full items-center justify-center rounded-2xl border-2 border-white bg-transparent px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10 sm:w-auto sm:px-8 sm:py-4">
+                    Our work →
+                </a>
+            </div>
+        </div>
+
+        <div class="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-12 sm:h-16" style="background: linear-gradient(to bottom, transparent, rgba(20,20,20,0.24));"></div>
+    </div>
+</div>
+<!--/banner-->
+
+<!-- Services -->
+
+    <section id="services-block" class="mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-service">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Section header -->
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-4xl md:text-5xl lg:text-7xl font-medium uppercase leading-none tracking-[-1.5px] text-roof-900">
+                    Professional Roofing Services in Colorado
+                </h2>
+                <p class="inline-block px-5 py-2 bg-roof-accent/10 text-roof-accent text-sm font-semibold tracking-[1.5px] uppercase rounded-3xl mb-6">
+                    EXPERT ROOFING SINCE 2009
+                </p>
+                <div class="mb-12 text-center">
+                    <div class="mx-auto flex w-full max-w-3xl flex-col items-center gap-4 rounded-2xl md:bg-slate-50 px-4 py-5 text-sm text-slate-500 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 sm:gap-y-3 sm:px-6">
+                        <div class="flex shrink-0 items-center gap-2">
+                            <span class="text-3xl font-semibold text-roof-900">4.98</span>
+                            <div class="text-left">
+                                <div class="flex text-xl text-amber-400">★★★★★</div>
+                                <div class="text-xs">Google Reviews</div>
+                            </div>
+                        </div>
+                        <div class="max-w-[20rem] text-center leading-snug sm:max-w-none sm:text-left">
+                            850+ reviews • 100% would recommend
+                        </div>
+                        <a href="/reviews" class="inline-flex shrink-0 items-center gap-2 font-medium text-roof-accent hover:text-roof-900">
+                            Read all reviews →
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Service cards grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6">
+    
+                <!-- 1. Residential Roofing -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/residential.jpg" alt="Residential Roofing Installation and Repair in Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-roof-900 mb-3">Residential Roofing</h3>
+                        <p class="text-slate-600 text-[15px] leading-relaxed mb-8">
+                            Installation and repair of pitched roofs for single-family homes.
+                            Shingle, metal, and composite systems — all backed by a 25-year warranty.
+                        </p>
+                        <div class="flex gap-3">
+                            <button onclick="window.location.href='services/residential.html'" class="flex-1 border border-roof-accent text-roof-accent hover:bg-roof-accent hover:text-white font-medium py-4 rounded-2xl transition-all">
+                                Learn More
+                            </button>
+                            <button type="button" data-open-modal="estimate" data-modal-title="Get a quote" class="flex-1 bg-roof-accent text-white font-medium py-4 rounded-2xl hover:shadow-xl transition-all">
+                                Get a Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 2. Commercial Roofing -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/commercial.jpg" alt="Commercial Roofing for Businesses in Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-roof-900 mb-3">Commercial Roofing</h3>
+                        <p class="text-slate-600 text-[15px] leading-relaxed mb-8">
+                            Durable solutions for offices, warehouses, and retail.
+                            TPO, EPDM, and modified bitumen — minimal downtime for your business.
+                        </p>
+                        <div class="flex gap-3">
+                            <button onclick="window.location.href='services.html'" class="flex-1 border border-roof-accent text-roof-accent hover:bg-roof-accent hover:text-white font-medium py-4 rounded-2xl transition-all">
+                                Learn More
+                            </button>
+                            <button type="button" data-open-modal="estimate" data-modal-title="Get a quote" class="flex-1 bg-roof-accent text-white font-medium py-4 rounded-2xl hover:shadow-xl transition-all">
+                                Get a Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 6. Emergency Roofing -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/emergency.jpg" alt="24/7 Emergency Roofing Services Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+                        <div class="absolute top-6 right-6 bg-red-500 text-white text-xs font-medium px-4 py-1 rounded-3xl shadow-inner">24/7</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-roof-900 mb-3">Emergency Roofing</h3>
+                        <p class="text-slate-600 text-[15px] leading-relaxed mb-8">
+                            24/7 response for storm, hail, or wind damage.
+                            Emergency tarping plus full repairs — often completed in one day.
+                        </p>
+                        <div class="flex gap-3">
+                            <button onclick="window.location.href='services.html'" class="flex-1 border border-roof-accent text-roof-accent hover:bg-roof-accent hover:text-white font-medium py-4 rounded-2xl transition-all">
+                                Learn More
+                            </button>
+                            <button onclick="window.location.href='tel:+13030000000'" class="flex-1 bg-roof-accent text-white font-medium py-4 rounded-2xl hover:shadow-xl transition-all">
+                                Call Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 3. Roof Repair -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/repair.jpg" alt="Roof Repair and Maintenance Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-roof-900 mb-3">Roof Repair &amp; Maintenance</h3>
+                        <p class="text-slate-600 text-[15px] leading-relaxed mb-8">
+                            Fast leak repairs and replacement of hail- or snow-damaged sections.
+                            On-site response within 24 hours.
+                        </p>
+                        <div class="flex gap-3">
+                            <button onclick="window.location.href='services.html'" class="flex-1 border border-roof-accent text-roof-accent hover:bg-roof-accent hover:text-white font-medium py-4 rounded-2xl transition-all">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 4. Metal Roofing -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/metal.jpg" alt="Metal Roofing Systems Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+                        <div class="absolute top-6 right-6 bg-white/95 text-roof-900 text-xs font-medium px-4 py-1 rounded-3xl shadow-inner">25-YEAR WARRANTY</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-roof-900 mb-3">Metal Roofing</h3>
+                        <p class="text-slate-600 text-[15px] leading-relaxed mb-8">
+                            Modern metal roofs with long-term corrosion resistance.
+                            Energy-efficient profiles and clean, contemporary looks.
+                        </p>
+                        <div class="flex gap-3">
+                            <button onclick="window.location.href='services.html'" class="flex-1 border border-roof-accent text-roof-accent hover:bg-roof-accent hover:text-white font-medium py-4 rounded-2xl transition-all">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- 5. Flat Roofing -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="images/flat.jpg" alt="Flat Roofing Systems Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-roof-900 mb-3">Flat Roofing</h3>
+                        <p class="text-slate-600 text-[15px] leading-relaxed mb-8">
+                            EPDM, TPO, and modified bitumen for low-slope roofs.
+                            Full waterproofing with high thermal performance.
+                        </p>
+                        <div class="flex gap-3">
+                            <button onclick="window.location.href='services.html'" class="flex-1 border border-roof-accent text-roof-accent hover:bg-roof-accent hover:text-white font-medium py-4 rounded-2xl transition-all">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <!-- View all services link -->
+            <div class="mt-12 text-center">
+                <a href="services.html" class="group inline-flex items-center gap-3 text-roof-accent hover:text-roof-900 text-lg font-medium transition-colors">
+                    View all services
+                    <span class="text-3xl transition-transform group-hover:translate-x-1">→</span>
+                </a>
+            </div>
+    
+        </div>
+    </section>
+    <!--/Services-->
+
+
+<!-- Featured Projects -->
+<section id="portfolio" class="mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Section title -->
+        <div class="text-center mb-12 lg:mb-16">
+            <h2 class="text-2xl font-medium uppercase leading-[1.1] tracking-tight text-roof-900 sm:text-3xl md:text-5xl md:leading-none md:tracking-[-1px] lg:text-6xl">
+                Projects
+            </h2>
+            <p class="inline-block px-5 py-2 mt-5 bg-roof-accent/10 text-roof-accent text-sm font-semibold tracking-[1.5px] uppercase rounded-3xl mb-6">
+                REAL PROJECTS • COLORADO
+            </p>
+            <p class="mt-6 text-xl text-slate-600 max-w-2xl mx-auto">
+                Over 850 completed projects in 15 years — from single-family homes to large commercial buildings.
+            </p>
+        </div>
+
+        <!-- Project gallery -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6">
+
+        <div class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
+            <div class="relative aspect-[640/400] overflow-hidden">
+                <img src="images/metal.jpg" alt="Standing seam metal roof in Aurora, Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 group-hover:to-transparent transition-all duration-500"></div>
+
+                <div class="absolute top-6 right-6 bg-white/90 text-roof-900 text-xs font-medium px-4 py-1 rounded-3xl shadow-inner backdrop-blur-sm z-20">
+                    2025 • Aurora, CO
+                </div>
+
+                <div class="absolute inset-0 flex flex-col justify-end p-8 text-white z-30
+                            opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+
+                    <h3 class="text-3xl font-semibold mb-2">Standing seam metal</h3>
+
+                    <p class="text-white/90 text-[15px] leading-relaxed mb-6">
+                        Clip-fastened panels for wind uplift and clean snow shed — residential Aurora install.
+                    </p>
+
+                    <a href="projects/standing-seam-aurora.html" class="inline-flex items-center justify-center w-full bg-white text-roof-900 px-8 py-4 rounded-2xl font-semibold hover:bg-amber-100 transition-colors shadow-lg">
+                        View full project →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
+            <div class="relative aspect-[640/400] overflow-hidden">
+                <img src="images/residential.jpg" alt="Custom home roof in Boulder, Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 group-hover:to-transparent transition-all duration-500"></div>
+
+                <div class="absolute top-6 right-6 bg-white/90 text-roof-900 text-xs font-medium px-4 py-1 rounded-3xl shadow-inner backdrop-blur-sm z-20">
+                    2024 • Boulder, CO
+                </div>
+
+                <div class="absolute inset-0 flex flex-col justify-end p-8 text-white z-30
+                            opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+
+                    <h3 class="text-3xl font-semibold mb-2">Custom home</h3>
+
+                    <p class="text-white/90 text-[15px] leading-relaxed mb-6">
+                        3,000 sq.ft. architectural shingles, upgraded insulation, and vapor-smart detailing.
+                    </p>
+
+                    <a href="projects/custom-home-boulder.html" class="inline-flex items-center justify-center w-full bg-white text-roof-900 px-8 py-4 rounded-2xl font-semibold hover:bg-amber-100 transition-colors shadow-lg">
+                        View full project →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
+            <div class="relative aspect-[640/400] overflow-hidden">
+                <img src="images/flat.jpg" alt="EPDM warehouse roof in Fort Collins, Colorado" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 group-hover:to-transparent transition-all duration-500"></div>
+
+                <div class="absolute top-6 right-6 bg-white/90 text-roof-900 text-xs font-medium px-4 py-1 rounded-3xl shadow-inner backdrop-blur-sm z-20">
+                    2023 • Fort Collins, CO
+                </div>
+
+                <div class="absolute inset-0 flex flex-col justify-end p-8 text-white z-30
+                            opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+
+                    <h3 class="text-3xl font-semibold mb-2">EPDM warehouse</h3>
+
+                    <p class="text-white/90 text-[15px] leading-relaxed mb-6">
+                        Ballasted EPDM re-roof, internal drains, and edge metal tied into wall coping.
+                    </p>
+
+                    <a href="projects/epdm-warehouse-fort-collins.html" class="inline-flex items-center justify-center w-full bg-white text-roof-900 px-8 py-4 rounded-2xl font-semibold hover:bg-amber-100 transition-colors shadow-lg">
+                        View full project →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="mt-12 text-center">
+            <a href="portfolio.html#gallery" class="group inline-flex items-center gap-3 text-roof-accent hover:text-roof-900 text-lg font-medium transition-colors">
+                All 850+ projects
+                <span class="text-3xl transition-transform group-hover:translate-x-1">→</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+<!--/Featured Projects-->
+
+<!-- Why Choose Us -->
+<section class="mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center mb-12 lg:mb-16">
+            <span class="inline-block px-5 py-2 bg-roof-accent/10 text-roof-accent text-sm font-semibold tracking-[1.5px] uppercase rounded-3xl mb-6">
+                WHY COLORADO ROOFING
+            </span>
+            <h2 class="text-2xl font-medium uppercase leading-[1.1] tracking-tight text-roof-900 sm:text-3xl md:text-5xl md:leading-none md:tracking-[-1px] lg:text-6xl">
+                Why Homeowners &amp; Businesses Choose Us
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- 1 -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-12 h-12 bg-roof-accent/10 text-roof-accent rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🏠</div>
+                <h3 class="text-2xl font-semibold text-roof-900 mb-3">15+ Years Experience</h3>
+                <p class="text-slate-600">Since 2009 we’ve completed 850+ projects across Colorado. We know the local climate inside and out.</p>
+            </div>
+
+            <!-- 2 -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-12 h-12 bg-roof-accent/10 text-roof-accent rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🛡️</div>
+                <h3 class="text-2xl font-semibold text-roof-900 mb-3">Full Warranty</h3>
+                <p class="text-slate-600">25-year material warranty plus 10-year workmanship — all spelled out in writing.</p>
+            </div>
+
+            <!-- 3 -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-12 h-12 bg-roof-accent/10 text-roof-accent rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">⚡</div>
+                <h3 class="text-2xl font-semibold text-roof-900 mb-3">Same-Day Quote</h3>
+                <p class="text-slate-600">Free on-site visit the day you call. Detailed estimate in about 30 minutes at your property.</p>
+            </div>
+
+            <!-- 4 -->
+            <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                <div class="w-12 h-12 bg-roof-accent/10 text-roof-accent rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">🌲</div>
+                <h3 class="text-2xl font-semibold text-roof-900 mb-3">Colorado Tough</h3>
+                <p class="text-slate-600">Roofs built for hail, snow, 100+ mph winds, and sharp temperature swings.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/Why Choose Us-->
+
+<!-- Testimonials -->
+<section class="mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-white" aria-labelledby="testimonials-heading">
+    <div class="max-w-7xl mx-auto">
+
+        <div class="text-center mb-10 lg:mb-12 max-w-3xl mx-auto">
+            <h2 id="testimonials-heading" class="text-2xl font-medium uppercase leading-[1.1] tracking-tight text-roof-900 sm:text-3xl md:text-5xl md:leading-none md:tracking-[-1px] lg:text-6xl">
+                What homeowners say
+            </h2>
+            <p class="inline-block px-5 py-2 mt-5 bg-roof-accent/10 text-roof-accent text-sm font-semibold tracking-[1.5px] uppercase rounded-3xl mb-6">
+                Google reviews • Colorado
+            </p>
+            <p class="text-lg text-slate-600">
+                Real feedback from residential and commercial clients across the Front Range.
+            </p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-slate-50/80 px-6 py-8 sm:px-10 sm:py-10 mb-10 lg:mb-12">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-8">
+                    <div class="flex items-center gap-4">
+                        <span class="text-4xl sm:text-5xl font-medium text-roof-900 tabular-nums">4.98</span>
+                        <div>
+                            <div class="flex text-amber-400 text-lg tracking-tight" aria-hidden="true">★★★★★</div>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-0.5">Google average</p>
+                        </div>
+                    </div>
+                    <div class="hidden sm:block w-px h-14 bg-slate-200 shrink-0" aria-hidden="true"></div>
+                    <p class="text-center sm:text-left text-slate-600 text-sm sm:text-base max-w-md">
+                        <span class="font-semibold text-roof-900">850+ reviews</span> — 100% of surveyed clients say they would recommend us.
+                    </p>
+                </div>
+                <a href="/reviews" class="inline-flex items-center justify-center gap-2 self-center lg:self-auto rounded-2xl bg-roof-900 text-white font-medium text-sm uppercase tracking-wide px-8 py-4 hover:bg-roof-accent transition-colors shrink-0">
+                    Read all reviews
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+            <article class="group relative flex flex-col h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300">
+                <div class="absolute left-0 top-8 bottom-8 w-1 rounded-full bg-roof-accent/80" aria-hidden="true"></div>
+                <div class="pl-5 flex flex-col flex-1">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex text-amber-400 text-sm tracking-tight" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <span class="text-[11px] font-medium uppercase tracking-widest text-slate-400">Residential</span>
+                    </div>
+                    <p class="text-slate-700 text-[17px] leading-relaxed flex-1">
+                        They replaced our roof in two days. After the 2024 hailstorm the whole neighborhood was scrambling, but they showed up the same day and nailed it. The 25-year warranty really puts us at ease.
+                    </p>
+                    <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-roof-accent/10 text-roof-accent text-sm font-medium flex items-center justify-center shrink-0" aria-hidden="true">MT</div>
+                        <div class="min-w-0">
+                            <p class="font-semibold text-roof-900">Michael Thompson</p>
+                            <p class="text-sm text-slate-500">Denver, CO • March 12, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="group relative flex flex-col h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300">
+                <div class="absolute left-0 top-8 bottom-8 w-1 rounded-full bg-roof-accent/80" aria-hidden="true"></div>
+                <div class="pl-5 flex flex-col flex-1">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex text-amber-400 text-sm tracking-tight" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <span class="text-[11px] font-medium uppercase tracking-widest text-slate-400">Commercial</span>
+                    </div>
+                    <p class="text-slate-700 text-[17px] leading-relaxed flex-1">
+                        Commercial roof on our 18,000 sq.ft. warehouse. They installed TPO in a week without shutting down operations. Professional, clean, and fully warrantied. I recommend them across Colorado.
+                    </p>
+                    <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-roof-accent/10 text-roof-accent text-sm font-medium flex items-center justify-center shrink-0" aria-hidden="true">SR</div>
+                        <div class="min-w-0">
+                            <p class="font-semibold text-roof-900">Sarah Rodriguez</p>
+                            <p class="text-sm text-slate-500">Boulder, CO • February 8, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="group relative flex flex-col h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300">
+                <div class="absolute left-0 top-8 bottom-8 w-1 rounded-full bg-roof-accent/80" aria-hidden="true"></div>
+                <div class="pl-5 flex flex-col flex-1">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex text-amber-400 text-sm tracking-tight" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <span class="text-[11px] font-medium uppercase tracking-widest text-slate-400">Metal roof</span>
+                    </div>
+                    <p class="text-slate-700 text-[17px] leading-relaxed flex-1">
+                        Black standing-seam metal on our mountain home in Aspen looks like art. Premium look, handles snow and hail. They arrived, finished the job, and left the site spotless. 10/10.
+                    </p>
+                    <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-roof-accent/10 text-roof-accent text-sm font-medium flex items-center justify-center shrink-0" aria-hidden="true">JH</div>
+                        <div class="min-w-0">
+                            <p class="font-semibold text-roof-900">James Harrington</p>
+                            <p class="text-sm text-slate-500">Aspen, CO • January 19, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="group relative flex flex-col h-full rounded-3xl border border-slate-100 bg-white p-8 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300">
+                <div class="absolute left-0 top-8 bottom-8 w-1 rounded-full bg-roof-accent/80" aria-hidden="true"></div>
+                <div class="pl-5 flex flex-col flex-1">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div class="flex text-amber-400 text-sm tracking-tight" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <span class="text-[11px] font-medium uppercase tracking-widest text-slate-400">Emergency</span>
+                    </div>
+                    <p class="text-slate-700 text-[17px] leading-relaxed flex-1">
+                        Emergency repair after a storm at 3 a.m. They were here by 4 with a tarp, and the next day completed a full replacement. They truly saved the house from water damage.
+                    </p>
+                    <div class="mt-8 pt-6 border-t border-slate-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-roof-accent/10 text-roof-accent text-sm font-medium flex items-center justify-center shrink-0" aria-hidden="true">LC</div>
+                        <div class="min-w-0">
+                            <p class="font-semibold text-roof-900">Lisa Chen</p>
+                            <p class="text-sm text-slate-500">Fort Collins, CO • April 5, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+<!--/Testimonials-->
+
+
+<section class="mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-slate-50" aria-labelledby="process-heading">
+    <div class="max-w-7xl mx-auto">
+
+        <div class="text-center mb-12 lg:mb-16 max-w-3xl mx-auto">
+            <h2 id="process-heading" class="text-2xl font-medium uppercase leading-[1.1] tracking-tight text-roof-900 sm:text-3xl md:text-5xl md:leading-none md:tracking-[-1px] lg:text-6xl">
+                Simple 4-Step Process
+            </h2>
+            <p class="inline-block px-5 py-2 mt-5 bg-roof-accent/10 text-roof-accent text-sm font-semibold tracking-[1.5px] uppercase rounded-3xl mb-6">
+                FROM INSPECTION TO WARRANTY
+            </p>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                Clear scope from the first visit through warranty — no surprises.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
+            <div class="hidden lg:block absolute top-12 left-0 w-full h-0 pointer-events-none border-t-2 border-dashed border-roof-accent/20 -z-0" aria-hidden="true"></div>
+
+            <div class="relative bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow z-10">
+                <div class="w-14 h-14 bg-roof-accent text-white rounded-2xl flex items-center justify-center text-2xl font-medium mb-6 shadow-lg shadow-roof-accent/30">1</div>
+                <h3 class="text-xl font-medium text-roof-900 mb-3">Free inspection</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed">We visit on your schedule, walk the roof safely, and use drone photos so you see issues without climbing. Typical visit 45–60 minutes; inspection is free and you keep photos for insurance.</p>
+            </div>
+
+            <div class="relative bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow z-10">
+                <div class="w-14 h-14 bg-roof-accent text-white rounded-2xl flex items-center justify-center text-2xl font-medium mb-6 shadow-lg shadow-roof-accent/30">2</div>
+                <h3 class="text-xl font-medium text-roof-900 mb-3">Detailed quote</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed">Materials, labor, timeline, and cleanup in a fixed-price proposal. Line items — not vague allowances. Financing options when you need them.</p>
+            </div>
+
+            <div class="relative bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow z-10">
+                <div class="w-14 h-14 bg-roof-accent text-white rounded-2xl flex items-center justify-center text-2xl font-medium mb-6 shadow-lg shadow-roof-accent/30">3</div>
+                <h3 class="text-xl font-medium text-roof-900 mb-3">Expert install</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed">Most homes finish in 1–2 days. We protect landscaping, move patio items carefully, and magnetic-sweep for nails. Built for Colorado wind and hail.</p>
+            </div>
+
+            <div class="relative bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow z-10">
+                <div class="w-14 h-14 bg-roof-accent text-white rounded-2xl flex items-center justify-center text-2xl font-medium mb-6 shadow-lg shadow-roof-accent/30">4</div>
+                <h3 class="text-xl font-medium text-roof-900 mb-3">Final walkthrough</h3>
+                <p class="text-slate-600 text-[15px] leading-relaxed mb-6">We review flashing, vents, and gutters with you, then hand over signed warranty paperwork and a photo report of the finished roof.</p>
+                <button type="button" data-open-modal="availability" data-modal-title="Check availability" class="inline-flex items-center justify-center w-full rounded-2xl border border-roof-accent text-roof-accent font-semibold text-sm py-3.5 hover:bg-roof-accent hover:text-white transition-colors">Check availability</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacts-block" class="mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+            
+            <div class="lg:w-1/2">
+                <span class="inline-block px-5 py-2 bg-roof-accent/10 text-roof-accent text-sm font-semibold tracking-[1.5px] uppercase rounded-3xl mb-6">
+                    WHERE WE WORK
+                </span>
+                <h2 class="text-4xl md:text-5xl font-medium uppercase leading-tight tracking-[-1px] text-roof-900 mb-6">
+                    Serving the Entire Front Range
+                </h2>
+                <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                    Our crews are staged across the state so we can reach your job fast — including mountain communities.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3 text-roof-900 font-medium">
+                        <span class="text-roof-accent text-xl">📍</span> Denver Metro Area
+                    </div>
+                    <div class="flex items-center gap-3 text-roof-900 font-medium">
+                        <span class="text-roof-accent text-xl">📍</span> Colorado Springs
+                    </div>
+                    <div class="flex items-center gap-3 text-roof-900 font-medium">
+                        <span class="text-roof-accent text-xl">📍</span> Fort Collins
+                    </div>
+                    <div class="flex items-center gap-3 text-roof-900 font-medium">
+                        <span class="text-roof-accent text-xl">📍</span> Boulder &amp; Longmont
+                    </div>
+                    <div class="flex items-center gap-3 text-roof-900 font-medium">
+                        <span class="text-roof-accent text-xl">📍</span> Aurora &amp; Centennial
+                    </div>
+                    <div class="flex items-center gap-3 text-roof-900 font-medium">
+                        <span class="text-roof-accent text-xl">📍</span> Castle Rock
+                    </div>
+                </div>
+
+                <button type="button" data-open-modal="availability" data-modal-title="Check availability in your city" class="inline-block mt-10 px-8 py-4 bg-roof-900 text-white font-medium rounded-2xl hover:bg-roof-accent transition-colors">
+                    CHECK AVAILABILITY IN YOUR CITY
+                </button>
+            </div>
+
+            <div class="lg:w-1/2 w-full">
+                <div class="relative bg-slate-100 rounded-[2.5rem] p-4 overflow-hidden shadow-inner">
+                    <div class="aspect-video lg:aspect-square bg-slate-200 rounded-[2rem] overflow-hidden relative">
+                        <iframe class="absolute inset-0 h-full w-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d196281.78620919507!2d-105.08531699387188!3d39.72952356256305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b80aa231f0713%3A0x118296340ab1be53!2sDenver%2C%20CO%2C%20USA!5e0!3m2!1sen!2sus!4v1743782400000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Colorado Front Range service area">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<footer id="callback-block" class="bg-roof-900 text-slate-300 pt-20 pb-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-slate-800">
+            
+            <div class="lg:col-span-4">
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <a href="index.html#banner" class="block h-10 md:h-12 shrink-0">
+                        <img src="images/logo.png" alt="" class="h-full w-auto max-h-12 object-contain" width="160" height="48">
+                    </a>
+                    <span class="text-xl sm:text-2xl font-bold text-white tracking-tight uppercase italic leading-tight">
+                        INTERMOUNTAIN<span class="text-roof-accent"> ROOFING</span>
+                    </span>
+                </div>
+                <p class="text-slate-400 leading-relaxed mb-8 max-w-sm">
+                    Your Intermountain West roofing partner since 2009. We protect homes and businesses from mountain weather with warranties you can count on.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:bg-roof-accent hover:text-white transition-all">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.446 18.627 0 12 0S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:bg-roof-accent hover:text-white transition-all">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12c0 3.26.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 1 0 2.881 1.44 1.44 0 0 1 0-2.881z"></path></svg>
+                    </a>
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:bg-roof-accent hover:text-white transition-all">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h4 class="text-white font-medium uppercase tracking-wider mb-6">Services</h4>
+                <ul class="space-y-4">
+                    <li><a href="services/residential.html" class="hover:text-roof-accent transition-colors">Residential Roofing</a></li>
+                    <li><a href="services/commercial.html" class="hover:text-roof-accent transition-colors">Commercial TPO</a></li>
+                    <li><a href="services/metal.html" class="hover:text-roof-accent transition-colors">Metal Roofs</a></li>
+                    <li><a href="services/emergency.html" class="hover:text-roof-accent transition-colors">Storm Damage</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-2">
+                <h4 class="text-white font-medium uppercase tracking-wider mb-6">Company</h4>
+                <ul class="space-y-4">
+                    <li><a href="about.html" class="hover:text-roof-accent transition-colors">About Us</a></li>
+                    <li><a href="portfolio.html" class="hover:text-roof-accent transition-colors">Our Projects</a></li>
+                    <li><a href="service-areas.html" class="hover:text-roof-accent transition-colors">Service Areas</a></li>
+                    <li><a href="contacts.html" class="hover:text-roof-accent transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-4 bg-slate-800/50 rounded-3xl p-8 border border-slate-700/50">
+                <h4 class="text-white font-medium uppercase tracking-wider mb-6 text-center lg:text-left">Get a Free Quote</h4>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-roof-accent/20 text-roof-accent rounded-2xl flex items-center justify-center text-xl">📞</div>
+                        <div>
+                            <div class="text-xs uppercase text-slate-500 font-medium">Call 24/7</div>
+                            <a href="tel:+13030000000" class="text-xl font-medium text-white hover:text-roof-accent">+1 (303) 000-0000</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-roof-accent/20 text-roof-accent rounded-2xl flex items-center justify-center text-xl">📧</div>
+                        <div>
+                            <div class="text-xs uppercase text-slate-500 font-medium">Email Us</div>
+                            <a href="mailto:info@colorado-roofing.com" class="text-lg text-white hover:text-roof-accent">info@roofing.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-sm text-slate-500">
+                © 2026 Intermountain Roofing &amp; Construction. All rights reserved.
+            </p>
+            <div class="flex gap-8 text-xs font-medium uppercase tracking-widest text-slate-500">
+                <a href="Privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="termofservice.html" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+            <div class="flex items-center gap-4 grayscale opacity-50 hover:opacity-100 transition-opacity">
+                <span class="text-xs font-mono border border-slate-700 px-2 py-1 rounded">LICENSED &amp; INSURED</span>
+                <span class="text-xl italic font-serif text-white">BBB A+</span>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script src="js/site-modals.js" defer=""></script>
+
+
+</body></html>

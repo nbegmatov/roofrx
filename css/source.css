@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-roof-700: #334155;
+  --color-roof-800: #1e293b;
+  --color-roof-900: #0f172a;
+  --color-roof-accent: #ea580c;
+  --color-roof-accent-hover: #c2410c;
+
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-style: normal;
+    font-optical-sizing: auto;
+  }
+}
+
+/* Совместимо с подсказками Google Fonts (.inter-<uniquifier> — здесь uniquifier: roof) */
+@layer components {
+  .inter-roof {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .bebas-neue-regular,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* Вертикальные линии сетки в секции услуг (класс .bg-service в HTML) */
+  .bg-service {
+    background-image: repeating-linear-gradient(
+      to right,
+      #e5e5e5 0px,
+      #e5e5e5 1px,
+      transparent 1px,
+      transparent calc(100% / 7)
+    );
+  }
+
+  /* admin/index.html — активный пункт сайдбара */
+  .nav-item.is-active {
+    background: rgba(234, 88, 12, 0.2);
+    color: #fff;
+  }
+}
+
+/* 5 колонок: SVG images/grid-column-tile.svg (линия справа) + repeat-x, каждая плитка 20% ширины. Путь от css/pages/*.css */
+@utility bg-vertical-grid-5 {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: url('../../images/grid-column-tile.svg');
+  background-repeat: repeat-x;
+  background-position: 0 0;
+  background-size: 20% 100%;
+
+  @media (max-width: 1023px) {
+    background-image: none;
+  }
+}
+@utility bg-vertical-grid-6 {
+  /* 6 колонок — плитка 100/6 % */
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: url('../../images/grid-column-tile.svg');
+  background-repeat: repeat-x;
+  background-position: 0 0;
+  background-size: calc(100% / 6) 100%;
+
+  @media (max-width: 1023px) {
+    background-image: none;
+  }
+}

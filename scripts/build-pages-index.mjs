@@ -12,6 +12,7 @@ const outPath = path.join(root, 'content', 'pages-index.json');
 const TITLE_RU = {
   'index.html': 'Главная',
   'about.html': 'О нас',
+  'blog.html': 'Блог',
   'contacts.html': 'Контакты',
   'reviews.html': 'Отзывы',
   'service-areas.html': 'Зона обслуживания',
@@ -49,6 +50,7 @@ function row(file) {
 const pagesFiles = [
   'index.html',
   'about.html',
+  'blog.html',
   'contacts.html',
   'reviews.html',
   'service-areas.html',
@@ -80,11 +82,22 @@ if (fs.existsSync(sdir)) {
     .forEach((f) => servicesRows.push(row(`services/${f}`)));
 }
 
+const blogRows = [];
+if (fs.existsSync(path.join(root, 'blog.html'))) blogRows.push(row('blog.html'));
+const bdir = path.join(root, 'blog');
+if (fs.existsSync(bdir)) {
+  fs.readdirSync(bdir)
+    .filter((f) => f.endsWith('.html'))
+    .sort()
+    .forEach((f) => blogRows.push(row(`blog/${f}`)));
+}
+
 const payload = {
   sections: [
     { id: 'pages', label: 'Страницы', rows: pagesFiles.map((f) => row(f)) },
     { id: 'projects', label: 'Проекты', rows: projectsRows },
     { id: 'services', label: 'Услуги', rows: servicesRows },
+    { id: 'blog', label: 'Блог', rows: blogRows },
   ],
 };
 

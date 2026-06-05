@@ -15,6 +15,11 @@
           "url": "/about.html"
         },
         {
+          "file": "blog.html",
+          "title": "Блог",
+          "url": "/blog.html"
+        },
+        {
           "file": "contacts.html",
           "title": "Контакты",
           "url": "/contacts.html"
@@ -155,6 +160,32 @@
           "file": "services/residential.html",
           "title": "Услуга: жилые кровли",
           "url": "/services/residential.html"
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "label": "Блог",
+      "rows": [
+        {
+          "file": "blog.html",
+          "title": "Блог",
+          "url": "/blog.html"
+        },
+        {
+          "file": "blog/hail-damage-signs-colorado.html",
+          "title": "Signs of Hail Damage on a Colorado Roof — Intermountain Roofing",
+          "url": "/blog/hail-damage-signs-colorado.html"
+        },
+        {
+          "file": "blog/roof-repair-vs-replacement.html",
+          "title": "Roof Repair vs Replacement — Intermountain Roofing",
+          "url": "/blog/roof-repair-vs-replacement.html"
+        },
+        {
+          "file": "blog/roof-replacement-cost-colorado.html",
+          "title": "Roof Replacement Cost in Colorado — Intermountain Roofing",
+          "url": "/blog/roof-replacement-cost-colorado.html"
         }
       ]
     }

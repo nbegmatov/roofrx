@@ -24,6 +24,10 @@ export const cssBundles = [
     out: 'css/pages/services.css',
     content: [
       'about.html',
+      'blog.html',
+      'blog/roof-replacement-cost-colorado.html',
+      'blog/hail-damage-signs-colorado.html',
+      'blog/roof-repair-vs-replacement.html',
       'reviews.html',
       'service-areas.html',
       'terms.html',

@@ -1,0 +1,13 @@
+{
+  "contact": {
+    "phone": {
+      "raw": "2676167534",
+      "href": "tel:+12676167534",
+      "display": "(267) 616-7534"
+    },
+    "email": {
+      "href": "mailto:intermtnroofing@gmail.com",
+      "display": "intermtnroofing@gmail.com"
+    }
+  }
+}

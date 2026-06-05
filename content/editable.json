@@ -1,11 +1,11 @@
 {
   "index.html": {
-    "meta.title": "ProRoof — Full-Service Roofing in Colorado",
-    "meta.description": "Roof installation and repair, shingles and metal systems, waterproofing. Warranty-backed work and free estimates.",
-    "banner.eyebrow": "Trusted roofing since 2010",
-    "banner.h1": "Full-service roofing — from inspection to warranty",
-    "banner.lede": "Installation, repair, and insulation. Contract-based work with clear timelines and pricing.",
-    "banner.cta-quote": "Get a quote",
+    "meta.title": "Roofrx — Roofing Repair & Replacement in Colorado",
+    "meta.description": "Roofrx provides roof repair, replacement, and storm-response services across Colorado with clear estimates and warranty-backed work.",
+    "banner.eyebrow": "Roofrx | Colorado roofing partner",
+    "banner.h1": "Roofrx handles roof repair, replacement, and storm response across Colorado",
+    "banner.lede": "Clear estimates, dependable crews, and warranty-backed roofing for homes and commercial properties along the Front Range.",
+    "banner.cta-quote": "Get a Roofrx quote",
     "banner.image": "images/bg1.jpg"
   },
   "about.html": {

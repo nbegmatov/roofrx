@@ -20,6 +20,11 @@
           "url": "/contacts.html"
         },
         {
+          "file": "reviews.html",
+          "title": "Отзывы",
+          "url": "/reviews.html"
+        },
+        {
           "file": "service-areas.html",
           "title": "Зона обслуживания",
           "url": "/service-areas.html"

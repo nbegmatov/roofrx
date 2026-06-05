@@ -24,6 +24,7 @@ export const cssBundles = [
     out: 'css/pages/services.css',
     content: [
       'about.html',
+      'reviews.html',
       'service-areas.html',
       'terms.html',
       'Privacy.html',

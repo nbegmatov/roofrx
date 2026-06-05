@@ -6,6 +6,7 @@
     "dev": "concurrently -k -n css,web -c green,magenta \"npm run watch:css\" \"live-server . --port=5173 --open=/index.html --wait=200\"",
     "watch:css": "node scripts/watch-css.mjs",
     "build:css": "node scripts/build-css.mjs",
+    "verify": "node scripts/verify.mjs",
     "content:apply": "node scripts/apply-editable.mjs",
     "content:scan": "node scripts/scan-editable.mjs",
     "build:css:index": "tailwindcss -i ./css/source.css -o ./css/pages/index.css --content ./index.html --minify",

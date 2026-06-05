@@ -26,10 +26,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Rebuild generated assets
-        run: |
-          npm run build:css
-          npm run content:scan
-
-      - name: Verify generated files are committed
-        run: git diff --exit-code -- css/pages content/pages-index.json content/editable.json
+      - name: Verify build output
+        run: npm run verify

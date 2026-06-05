@@ -9,8 +9,8 @@
 ## Установка и первый запуск
 
 ```bash
-git clone https://github.com/kyrgyzelim/roofing
-cd roofing
+git clone git@github.com:nbegmatov/roofrx.git
+cd roofrx
 npm install
 ```
 
@@ -69,6 +69,8 @@ admin/                      — простая локальная админка
 
 1. Выполнить `npm install` и `npm run build:css` в чистой среде сборки при необходимости.
 2. Залить **корень проекта без** папки `node_modules/` (она в `.gitignore`).
+
+Для переносимого запуска и повторного деплоя с любого сервера см. `docs/deployment.md`.
 
 ## Что не в репозитории
 

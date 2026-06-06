@@ -9,24 +9,69 @@
     "banner.image": "images/bg1.jpg"
   },
   "about.html": {
-    "meta.title": "About Us — Colorado Roofing",
-    "meta.description": "Colorado Roofing: licensed crews, written warranties, and Front Range experience since 2009."
+    "meta.title": "About Us — Intermountain Roofing",
+    "meta.description": "Intermountain Roofing: licensed crews, written warranties, and Front Range experience since 2009."
   },
   "contacts.html": {
-    "meta.title": "Contact — Colorado Roofing",
-    "meta.description": "Call, email, or request an estimate. Colorado Roofing serves the Front Range with inspections, installs, and storm response."
+    "meta.title": "Contact — Intermountain Roofing",
+    "meta.description": "Call, email, or request an estimate. Intermountain Roofing serves the Front Range with inspections, installs, and storm response."
   },
   "service-areas.html": {
-    "meta.title": "Service Areas — Colorado Roofing",
-    "meta.description": "Roofing service areas across the Colorado Front Range: Denver, Springs, Fort Collins, Boulder, and more."
+    "meta.title": "Service Areas — Intermountain Roofing",
+    "meta.description": "Intermountain Roofing service areas across the Colorado Front Range: Denver, Springs, Fort Collins, Boulder, and more."
   },
   "portfolio.html": {
-    "meta.title": "Portfolio — Colorado Roofing | Completed Projects",
-    "meta.description": "Roofing project gallery: residential, commercial, metal and shingle systems across Colorado."
+    "meta.title": "Portfolio — Intermountain Roofing | Completed Projects",
+    "meta.description": "Intermountain Roofing project gallery: residential, commercial, metal and shingle systems across Colorado."
   },
   "services.html": {
-    "meta.title": "Roofing Services — Colorado Roofing",
-    "meta.description": "Residential, commercial, metal, flat, repair, and emergency roofing across Colorado. Free estimates and warranty-backed work."
+    "meta.title": "Roofing Services — Intermountain Roofing",
+    "meta.description": "Residential, commercial, metal, flat, repair, and emergency roofing across Colorado. Free estimates and warranty-backed work from Intermountain Roofing."
+  },
+  "services/residential.html": {
+    "meta.title": "Residential Roofing — Intermountain Roofing"
+  },
+  "services/commercial.html": {
+    "meta.title": "Commercial Roofing — Intermountain Roofing"
+  },
+  "services/metal.html": {
+    "meta.title": "Metal Roofing — Intermountain Roofing"
+  },
+  "services/flat.html": {
+    "meta.title": "Flat & Low-Slope Roofing — Intermountain Roofing"
+  },
+  "services/repair.html": {
+    "meta.title": "Roof Repair & Maintenance — Intermountain Roofing"
+  },
+  "services/emergency.html": {
+    "meta.title": "Emergency Roofing — Intermountain Roofing"
+  },
+  "projects/business-plaza-denver.html": {
+    "meta.title": "Business plaza — Denver | Portfolio | Intermountain Roofing"
+  },
+  "projects/custom-home-boulder.html": {
+    "meta.title": "Custom home — Boulder | Portfolio | Intermountain Roofing"
+  },
+  "projects/epdm-warehouse-fort-collins.html": {
+    "meta.title": "EPDM warehouse — Fort Collins | Portfolio | Intermountain Roofing"
+  },
+  "projects/industrial-greeley.html": {
+    "meta.title": "Industrial facility — Greeley | Portfolio | Intermountain Roofing"
+  },
+  "projects/major-retrofit-pueblo.html": {
+    "meta.title": "Major retrofit — Pueblo | Portfolio | Intermountain Roofing"
+  },
+  "projects/new-roof-colorado-springs.html": {
+    "meta.title": "New roof system — Colorado Springs | Portfolio | Intermountain Roofing"
+  },
+  "projects/post-storm-lakewood.html": {
+    "meta.title": "Post-storm repair — Lakewood | Portfolio | Intermountain Roofing"
+  },
+  "projects/standing-seam-aurora.html": {
+    "meta.title": "Standing seam metal — Aurora | Portfolio | Intermountain Roofing"
+  },
+  "projects/townhome-westminster.html": {
+    "meta.title": "Townhome row — Westminster | Portfolio | Intermountain Roofing"
   },
   "Privacy.html": {
     "meta.title": "Privacy Policy — Intermountain Roofing",

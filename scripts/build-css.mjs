@@ -28,3 +28,8 @@ spawnSync(process.execPath, [join(root, 'scripts', 'build-pages-index.mjs')], {
   cwd: root,
   stdio: 'inherit',
 });
+
+spawnSync(process.execPath, [join(root, 'scripts', 'build-sitemap.mjs')], {
+  cwd: root,
+  stdio: 'inherit',
+});

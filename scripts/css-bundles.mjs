@@ -25,9 +25,12 @@ export const cssBundles = [
     content: [
       'about.html',
       'blog.html',
+      'blog/best-roofing-material-colorado.html',
       'blog/roof-replacement-cost-colorado.html',
       'blog/hail-damage-signs-colorado.html',
+      'blog/how-long-does-a-roof-last-colorado.html',
       'blog/roof-repair-vs-replacement.html',
+      'blog/signs-you-need-a-new-roof.html',
       'reviews.html',
       'service-areas.html',
       'terms.html',

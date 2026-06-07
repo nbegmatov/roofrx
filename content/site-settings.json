@@ -1,4 +1,10 @@
 {
+  "site": {
+    "name": "Roofrx Services",
+    "legalName": "Roofrx Services",
+    "domain": "roofrxservices.com",
+    "url": "https://roofrxservices.com"
+  },
   "contact": {
     "phone": {
       "raw": "3034766379",
@@ -6,8 +12,8 @@
       "display": "303 iroofrx"
     },
     "email": {
-      "href": "mailto:intermtnroofing@gmail.com",
-      "display": "intermtnroofing@gmail.com"
+      "href": "mailto:nick@roofrxservices.com",
+      "display": "nick@roofrxservices.com"
     }
   }
 }

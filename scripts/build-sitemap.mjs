@@ -4,7 +4,14 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outPath = path.join(root, 'sitemap.xml');
-const siteUrl = 'https://intermtnroofing.com';
+const settingsPath = path.join(root, 'content', 'site-settings.json');
+const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+const siteUrl = settings.site?.url;
+
+if (!siteUrl) {
+  console.error('Missing site.url in content/site-settings.json');
+  process.exit(1);
+}
 
 function* walk(dir) {
   for (const name of fs.readdirSync(dir)) {

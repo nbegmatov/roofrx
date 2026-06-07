@@ -9,11 +9,12 @@ const settingsPath = join(root, 'content', 'site-settings.json');
 const modalScriptName = 'site-modals-ga4.js';
 
 const settings = JSON.parse(readFileSync(settingsPath, 'utf8'));
+const site = settings.site;
 const phone = settings.contact?.phone;
 const email = settings.contact?.email;
 
-if (!phone?.href || !phone?.display || !email?.href || !email?.display) {
-  console.error('Missing contact settings in content/site-settings.json');
+if (!site?.name || !site?.legalName || !site?.domain || !site?.url || !phone?.href || !phone?.display || !email?.href || !email?.display) {
+  console.error('Missing site/contact settings in content/site-settings.json');
   process.exit(1);
 }
 
@@ -43,6 +44,13 @@ const replacements = [
   ['mailto:info@colorado-roofing.com', `mailto:${emailUri}`],
   ['info@colorado-roofing.com', email.display],
   ['info@roofing.com', email.display],
+  ['href="mailto:intermtnroofing@gmail.com"', `href="${email.href}"`],
+  ['mailto:intermtnroofing@gmail.com', `mailto:${emailUri}`],
+  ['intermtnroofing@gmail.com', email.display],
+  ['https://intermtnroofing.com', site.url],
+  ['intermtnroofing.com', site.domain],
+  ['Intermountain Roofing &amp; Construction', site.legalName],
+  ['Intermountain Roofing', site.name],
 ];
 
 function* walk(dir) {

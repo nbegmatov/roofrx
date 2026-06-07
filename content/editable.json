@@ -1,85 +1,85 @@
 {
   "index.html": {
-    "meta.title": "Intermountain Roofing — Roofing Repair & Replacement in Colorado",
-    "meta.description": "Intermountain Roofing provides roof repair, replacement, and storm-response services across Colorado with clear estimates and warranty-backed work.",
-    "banner.eyebrow": "Intermountain Roofing | Colorado roofing partner",
-    "banner.h1": "Intermountain Roofing handles roof repair, replacement, and storm response across Colorado",
+    "meta.title": "Roofrx Services — Roofing Repair & Replacement in Colorado",
+    "meta.description": "Roofrx Services provides roof repair, replacement, and storm-response services across Colorado with clear estimates and warranty-backed work.",
+    "banner.eyebrow": "Roofrx Services | Colorado roofing partner",
+    "banner.h1": "Roofrx Services handles roof repair, replacement, and storm response across Colorado",
     "banner.lede": "Clear estimates, dependable crews, and warranty-backed roofing for homes and commercial properties along the Front Range.",
-    "banner.cta-quote": "Get an Intermountain Roofing quote",
+    "banner.cta-quote": "Get a Roofrx Services quote",
     "banner.image": "images/bg1.jpg"
   },
   "about.html": {
-    "meta.title": "About Us — Intermountain Roofing",
-    "meta.description": "Intermountain Roofing: licensed crews, written warranties, and Front Range experience since 2009."
+    "meta.title": "About Us — Roofrx Services",
+    "meta.description": "Roofrx Services: licensed crews, written warranties, and Front Range experience since 2009."
   },
   "contacts.html": {
-    "meta.title": "Contact — Intermountain Roofing",
-    "meta.description": "Call, email, or request an estimate. Intermountain Roofing serves the Front Range with inspections, installs, and storm response."
+    "meta.title": "Contact — Roofrx Services",
+    "meta.description": "Call, email, or request an estimate. Roofrx Services serves the Front Range with inspections, installs, and storm response."
   },
   "service-areas.html": {
-    "meta.title": "Service Areas — Intermountain Roofing",
-    "meta.description": "Intermountain Roofing service areas across the Colorado Front Range: Denver, Springs, Fort Collins, Boulder, and more."
+    "meta.title": "Service Areas — Roofrx Services",
+    "meta.description": "Roofrx Services service areas across the Colorado Front Range: Denver, Springs, Fort Collins, Boulder, and more."
   },
   "portfolio.html": {
-    "meta.title": "Portfolio — Intermountain Roofing | Completed Projects",
-    "meta.description": "Intermountain Roofing project gallery: residential, commercial, metal and shingle systems across Colorado."
+    "meta.title": "Portfolio — Roofrx Services | Completed Projects",
+    "meta.description": "Roofrx Services project gallery: residential, commercial, metal and shingle systems across Colorado."
   },
   "services.html": {
-    "meta.title": "Roofing Services — Intermountain Roofing",
-    "meta.description": "Residential, commercial, metal, flat, repair, and emergency roofing across Colorado. Free estimates and warranty-backed work from Intermountain Roofing."
+    "meta.title": "Roofing Services — Roofrx Services",
+    "meta.description": "Residential, commercial, metal, flat, repair, and emergency roofing across Colorado. Free estimates and warranty-backed work from Roofrx Services."
   },
   "services/residential.html": {
-    "meta.title": "Residential Roofing — Intermountain Roofing"
+    "meta.title": "Residential Roofing — Roofrx Services"
   },
   "services/commercial.html": {
-    "meta.title": "Commercial Roofing — Intermountain Roofing"
+    "meta.title": "Commercial Roofing — Roofrx Services"
   },
   "services/metal.html": {
-    "meta.title": "Metal Roofing — Intermountain Roofing"
+    "meta.title": "Metal Roofing — Roofrx Services"
   },
   "services/flat.html": {
-    "meta.title": "Flat & Low-Slope Roofing — Intermountain Roofing"
+    "meta.title": "Flat & Low-Slope Roofing — Roofrx Services"
   },
   "services/repair.html": {
-    "meta.title": "Roof Repair & Maintenance — Intermountain Roofing"
+    "meta.title": "Roof Repair & Maintenance — Roofrx Services"
   },
   "services/emergency.html": {
-    "meta.title": "Emergency Roofing — Intermountain Roofing"
+    "meta.title": "Emergency Roofing — Roofrx Services"
   },
   "projects/business-plaza-denver.html": {
-    "meta.title": "Business plaza — Denver | Portfolio | Intermountain Roofing"
+    "meta.title": "Business plaza — Denver | Portfolio | Roofrx Services"
   },
   "projects/custom-home-boulder.html": {
-    "meta.title": "Custom home — Boulder | Portfolio | Intermountain Roofing"
+    "meta.title": "Custom home — Boulder | Portfolio | Roofrx Services"
   },
   "projects/epdm-warehouse-fort-collins.html": {
-    "meta.title": "EPDM warehouse — Fort Collins | Portfolio | Intermountain Roofing"
+    "meta.title": "EPDM warehouse — Fort Collins | Portfolio | Roofrx Services"
   },
   "projects/industrial-greeley.html": {
-    "meta.title": "Industrial facility — Greeley | Portfolio | Intermountain Roofing"
+    "meta.title": "Industrial facility — Greeley | Portfolio | Roofrx Services"
   },
   "projects/major-retrofit-pueblo.html": {
-    "meta.title": "Major retrofit — Pueblo | Portfolio | Intermountain Roofing"
+    "meta.title": "Major retrofit — Pueblo | Portfolio | Roofrx Services"
   },
   "projects/new-roof-colorado-springs.html": {
-    "meta.title": "New roof system — Colorado Springs | Portfolio | Intermountain Roofing"
+    "meta.title": "New roof system — Colorado Springs | Portfolio | Roofrx Services"
   },
   "projects/post-storm-lakewood.html": {
-    "meta.title": "Post-storm repair — Lakewood | Portfolio | Intermountain Roofing"
+    "meta.title": "Post-storm repair — Lakewood | Portfolio | Roofrx Services"
   },
   "projects/standing-seam-aurora.html": {
-    "meta.title": "Standing seam metal — Aurora | Portfolio | Intermountain Roofing"
+    "meta.title": "Standing seam metal — Aurora | Portfolio | Roofrx Services"
   },
   "projects/townhome-westminster.html": {
-    "meta.title": "Townhome row — Westminster | Portfolio | Intermountain Roofing"
+    "meta.title": "Townhome row — Westminster | Portfolio | Roofrx Services"
   },
   "Privacy.html": {
-    "meta.title": "Privacy Policy — Intermountain Roofing",
-    "meta.description": "Privacy policy for Intermountain Roofing: how we handle contact information and website use."
+    "meta.title": "Privacy Policy — Roofrx Services",
+    "meta.description": "Privacy policy for Roofrx Services: how we handle contact information and website use."
   },
   "termofservice.html": {
-    "meta.title": "Terms of Service — Intermountain Roofing",
-    "meta.description": "Terms of service for using the Intermountain Roofing website and requesting estimates."
+    "meta.title": "Terms of Service — Roofrx Services",
+    "meta.description": "Terms of service for using the Roofrx Services website and requesting estimates."
   },
   "terms.html": {
     "meta.title": "Redirecting…",

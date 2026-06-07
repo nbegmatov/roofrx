@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const settingsPath = join(root, 'content', 'site-settings.json');
 
+const modalScriptName = 'site-modals-ga4.js';
+
 const settings = JSON.parse(readFileSync(settingsPath, 'utf8'));
 const phone = settings.contact?.phone;
 const email = settings.contact?.email;
@@ -56,7 +58,7 @@ function* walk(dir) {
     }
 
     const relPath = relative(root, fullPath).split('\\').join('/');
-    if (relPath === 'js/site-modals.js' || relPath.endsWith('.html')) {
+    if (relPath === 'js/site-modals.js' || relPath === `js/${modalScriptName}` || relPath.endsWith('.html')) {
       yield relPath;
     }
   }
@@ -87,11 +89,15 @@ if (relPaths.includes('js/site-modals.js')) {
   updateFile('js/site-modals.js');
 }
 
-const modalScriptPath = join(root, 'js', 'site-modals.js');
+if (relPaths.includes(`js/${modalScriptName}`)) {
+  updateFile(`js/${modalScriptName}`);
+}
+
+const modalScriptPath = join(root, 'js', modalScriptName);
 const modalScriptVersion = createHash('sha1').update(readFileSync(modalScriptPath, 'utf8')).digest('hex').slice(0, 10);
 const htmlRegexReplacements = [
-  [/src="js\/site-modals\.js(?:\?v=[^"]+)?"/g, `src="js/site-modals.js?v=${modalScriptVersion}"`],
-  [/src="\.\.\/js\/site-modals\.js(?:\?v=[^"]+)?"/g, `src="../js/site-modals.js?v=${modalScriptVersion}"`],
+  [/src="js\/site-modals(?:-ga4)?\.js(?:\?v=[^"]+)?"/g, `src="js/${modalScriptName}?v=${modalScriptVersion}"`],
+  [/src="\.\.\/js\/site-modals(?:-ga4)?\.js(?:\?v=[^"]+)?"/g, `src="../js/${modalScriptName}?v=${modalScriptVersion}"`],
 ];
 
 for (const relPath of relPaths) {

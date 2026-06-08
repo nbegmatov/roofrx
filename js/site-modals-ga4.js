@@ -18,7 +18,7 @@
     '<input id="estimate-name" name="name" type="text" required autocomplete="name" data-modal-initial-focus class="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition-shadow focus:border-roof-accent focus:ring-2 focus:ring-roof-accent/20" placeholder="Your name" /></div>' +
     '<div class="grid gap-4 sm:grid-cols-2">' +
     '<div><label for="estimate-phone" class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-500">Phone</label>' +
-    '<input id="estimate-phone" name="phone" type="tel" required autocomplete="tel" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition-shadow focus:border-roof-accent focus:ring-2 focus:ring-roof-accent/20" placeholder="303 iroofrx" /></div>' +
+    '<input id="estimate-phone" name="phone" type="tel" required autocomplete="tel" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition-shadow focus:border-roof-accent focus:ring-2 focus:ring-roof-accent/20" placeholder="303 roofrxs" /></div>' +
     '<div><label for="estimate-email" class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-500">Email</label>' +
     '<input id="estimate-email" name="email" type="email" autocomplete="email" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition-shadow focus:border-roof-accent focus:ring-2 focus:ring-roof-accent/20" placeholder="you@email.com" /></div></div>' +
     '<div><label for="estimate-zip" class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-500">City or ZIP</label>' +
@@ -29,11 +29,11 @@
     '<div><label for="estimate-notes" class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-500">Notes <span class="font-normal normal-case tracking-normal text-slate-400">(optional)</span></label>' +
     '<textarea id="estimate-notes" name="notes" rows="3" class="w-full resize-y rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition-shadow focus:border-roof-accent focus:ring-2 focus:ring-roof-accent/20" placeholder="Rough size, timeline, photos by email…"></textarea></div>' +
     '<button type="submit" class="w-full rounded-2xl bg-roof-accent py-3.5 text-sm font-medium text-white shadow-lg shadow-roof-accent/25 transition-colors hover:bg-roof-accent-hover">Send request</button>' +
-    '<p class="text-center text-xs text-slate-500">Prefer to talk? <a href="tel:+13034766379" class="font-semibold text-roof-accent hover:underline">303 iroofrx</a></p></form>' +
+    '<p class="text-center text-xs text-slate-500">Prefer to talk? <a href="tel:+13037663797" class="font-semibold text-roof-accent hover:underline">303 roofrxs</a></p></form>' +
     '<div id="modal-estimate-success" class="hidden mt-6 rounded-2xl border border-emerald-200 bg-emerald-50/80 p-6 text-center">' +
     '<p class="text-lg font-medium text-roof-900">Thanks — we got it.</p>' +
     '<p class="mt-2 text-slate-600 text-[15px] leading-relaxed">We’ll reach out shortly. For urgent leaks, call dispatch now.</p>' +
-    '<a href="tel:+13034766379" class="mt-5 inline-flex w-full justify-center rounded-2xl bg-roof-accent py-3.5 text-sm font-medium text-white hover:bg-roof-accent-hover transition-colors">Call 303 iroofrx</a>' +
+    '<a href="tel:+13037663797" class="mt-5 inline-flex w-full justify-center rounded-2xl bg-roof-accent py-3.5 text-sm font-medium text-white hover:bg-roof-accent-hover transition-colors">Call 303 roofrxs</a>' +
     '<button type="button" class="mt-3 w-full rounded-2xl border-2 border-slate-200 py-3 text-sm font-medium text-roof-900 hover:border-roof-accent transition-colors" data-modal-close>Close</button></div></div></div>' +
     '<div id="site-modal-availability" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6" aria-hidden="true">' +
     '<div class="absolute inset-0 bg-roof-900/70 backdrop-blur-sm" data-modal-backdrop tabindex="-1" aria-hidden="true"></div>' +
@@ -48,7 +48,7 @@
     '<select id="availability-area" data-modal-initial-focus class="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition-shadow focus:border-roof-accent focus:ring-2 focus:ring-roof-accent/20">' +
     '<option value="">Choose a region…</option><option value="denver">Denver Metro</option><option value="springs">Colorado Springs</option><option value="fort-collins">Fort Collins</option><option value="boulder">Boulder &amp; Longmont</option><option value="aurora">Aurora &amp; Centennial</option><option value="castle-rock">Castle Rock</option><option value="mountain">Mountain / other</option></select></div>' +
     '<p class="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600 leading-relaxed">Typical response: <strong class="text-roof-900">one business day</strong> for scheduling. Same-week visits when routes allow.</p>' +
-    '<a href="tel:+13034766379" class="flex w-full items-center justify-center gap-2 rounded-2xl bg-roof-accent py-3.5 text-sm font-medium text-white shadow-lg shadow-roof-accent/25 transition-colors hover:bg-roof-accent-hover">Call dispatch — fastest</a>' +
+    '<a href="tel:+13037663797" class="flex w-full items-center justify-center gap-2 rounded-2xl bg-roof-accent py-3.5 text-sm font-medium text-white shadow-lg shadow-roof-accent/25 transition-colors hover:bg-roof-accent-hover">Call dispatch — fastest</a>' +
     '<button type="button" class="w-full rounded-2xl border-2 border-roof-900 bg-roof-900 py-3.5 text-sm font-medium text-white transition-colors hover:bg-roof-accent hover:border-roof-accent" data-open-estimate-from-availability>Request a written estimate</button></div></div></div>';
 
   function titleFromTrigger(el) {

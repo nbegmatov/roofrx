@@ -1,11 +1,11 @@
 {
   "index.html": {
-    "meta.title": "Roofrx Services — Roofing Repair & Replacement in Colorado",
-    "meta.description": "Roofrx Services provides roof repair, replacement, and storm-response services across Colorado with clear estimates and warranty-backed work.",
-    "banner.eyebrow": "Roofrx Services | Colorado roofing partner",
-    "banner.h1": "Roofrx Services handles roof repair, replacement, and storm response across Colorado",
-    "banner.lede": "Clear estimates, dependable crews, and warranty-backed roofing for homes and commercial properties along the Front Range.",
-    "banner.cta-quote": "Get a Roofrx Services quote",
+    "meta.title": "Roofrx Services — Roofing, Solar & Storm Damage in Colorado",
+    "meta.description": "Roofrx Services handles roof replacement, repairs and maintenance, solar panels, flat and metal roofs, insurance claims, and storm damage across Colorado.",
+    "banner.eyebrow": "Roofrx Services | Roofing • Solar • Claims support",
+    "banner.h1": "Roof replacement, repairs, solar panels, and storm recovery across Colorado",
+    "banner.lede": "From flat and metal roofs to insurance-claim support after hail, RoofRx delivers clear scopes, dependable crews, and warranty-backed work across the Front Range.",
+    "banner.cta-quote": "Request a RoofRx estimate",
     "banner.image": "images/bg1.jpg"
   },
   "about.html": {
@@ -26,7 +26,7 @@
   },
   "services.html": {
     "meta.title": "Roofing Services — Roofrx Services",
-    "meta.description": "Residential, commercial, metal, flat, repair, and emergency roofing across Colorado. Free estimates and warranty-backed work from Roofrx Services."
+    "meta.description": "Roofrx Services offers roof replacement, repairs and maintenance, solar panels, flat roofs, metal roofs, insurance claims help, and storm damage response across Colorado."
   },
   "services/residential.html": {
     "meta.title": "Residential Roofing — Roofrx Services"

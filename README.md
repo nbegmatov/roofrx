@@ -1,12 +1,12 @@
-# Сайт кровельной компании (статический витринный сайт)
+# Roofing Company Website (Static Showcase Site)
 
-Статический многостраничный сайт на **HTML** + **Tailwind CSS v4**. Сборка CSS через CLI; локальная разработка — с поднятием сервера и пересборкой стилей при изменениях.
+Static multi-page site built with **HTML** + **Tailwind CSS v4**. CSS is compiled through the CLI; local development runs a server and rebuilds styles when files change.
 
-## Что понадобится
+## Requirements
 
-- **[Node.js](https://nodejs.org/)** — рекомендуется актуальный **LTS** (или минимум 18+ для нативной поддержки ES-модулей проекта).
+- **[Node.js](https://nodejs.org/)** — the latest **LTS** is recommended (or at least Node 18+ for native ES module support used by this project).
 
-## Установка и первый запуск
+## Installation and First Run
 
 ```bash
 git clone git@github.com:nbegmatov/roofrx.git
@@ -14,68 +14,123 @@ cd roofrx
 npm install
 ```
 
-Соберите CSS (перед любым деплоем это обязательно; при `npm run dev` сборка уже запускается автоматически):
+Build the CSS first (this is required before any deployment; when using `npm run dev`, the build runs automatically):
 
 ```bash
 npm run build:css
 ```
 
-## Режим разработки (рекомендуется)
+## Development Mode (Recommended)
 
-Команда поднимает локальный сайт на **порту 5173**, следит за `css/source.css` и перечитывает HTML-пакеты Tailwind для пересборки **всех** нужных файлов из `scripts/css-bundles.mjs`.
+This command starts the local site on **port 5173**, watches `css/source.css`, and rereads the Tailwind HTML bundles to rebuild **all** required files listed in `scripts/css-bundles.mjs`.
 
 ```bash
 npm run dev
 ```
 
-Откройте в браузере: [http://127.0.0.1:5173/](http://127.0.0.1:5173/)
+Open in your browser: [http://127.0.0.1:5173/](http://127.0.0.1:5173/)
 
-- Главная: `/index.html` (может открыться автоматически).
-- Админка-редактор контента (только локально): [http://127.0.0.1:5173/admin/index.html](http://127.0.0.1:5173/admin/index.html).
+- Home page: `/index.html` (may open automatically).
+- Content editor admin page (local only): [http://127.0.0.1:5173/admin/index.html](http://127.0.0.1:5173/admin/index.html).
 
-Остановить сервер: **Ctrl+C** в терминале.
+Stop the server with **Ctrl+C** in the terminal.
 
-### Порт уже занят
+## Current Roofrx Refresh Status (Handoff)
 
-Если на `5173` что‑то висит — временно измените команду в `package.json` в скрипте `dev`, заменив `--port=5173` на свободный порт.
+This section is a handoff note for the next agent picking up the current Roofrx website refresh.
 
-## Основные команды
+### Current Service Taxonomy
 
-| Команда | Назначение |
+The active service structure is now:
+
+- Group 1: Core roofing
+  - Roof Replacement
+  - Roof Repairs / Maintenance
+  - Flat Roofs
+  - Metal Roofs
+- Group 2: Solar
+  - Solar Panels
+- Group 3: Claims & storm
+  - Insurance Claims
+  - Storm Damage
+
+### Completed Website Changes
+
+- `index.html`
+  - Homepage services section refactored into the 3 grouped service bands above.
+  - Header updated toward the target conversion funnel with `Services`, `Projects`, `Reviews`, `Areas Served`, and `Blog`.
+  - Hero CTA updated to `Book your free roof inspection`.
+  - Added post-hero trust bar, stronger `Why Choose Us`, a homepage blog/learning section, and a final CTA band before the footer.
+- `services.html`
+  - Services page refactored to the 7-service grouped taxonomy with anchors for each service.
+- `content/editable.json`
+  - Homepage/services metadata updated to match the new service positioning.
+- Generated files
+  - Tailwind CSS outputs in `css/pages/*.css` were rebuilt.
+  - `sitemap.xml` was regenerated during the local build flow.
+
+### Local Preview
+
+To resume quickly:
+
+```bash
+npm install
+npm run dev
+```
+
+Then review:
+
+- Homepage: `http://127.0.0.1:5173/index.html`
+- Services page: `http://127.0.0.1:5173/services.html`
+
+### Recommended Next Steps
+
+- Visually review the homepage and services page together after the grouped-service changes.
+- Decide whether `Roof Replacement`, `Solar Panels`, and `Insurance Claims` should remain section-only on `services.html` or get dedicated detail pages.
+- Prepare a focused commit for the site-facing changes when ready.
+- Follow `docs/deployment.md` for the preferred production deployment model.
+
+### Port Already in Use
+
+If something is already running on `5173`, temporarily change the `dev` script in `package.json` by replacing `--port=5173` with any free port.
+
+## Main Commands
+
+| Command | Purpose |
 |--------|------------|
-| `npm run dev` | Сборка CSS + watch + локальный сервер (`live-server`) |
-| `npm run build:css` | Однократная сборка всех бандлов в `css/pages/*.css` |
-| `npm run watch:css` | Только watch CSS (без сервера) |
-| `npm run content:scan` | Обновить `content/editable.json`: подтянуть ключи из `data-editable*` в HTML |
-| `npm run content:apply` | Записать `content/editable.json` обратно в HTML (+ обновляет `content/page-meta.json`) |
+| `npm run dev` | Build CSS + watch + local server (`live-server`) |
+| `npm run build:css` | One-time build of all bundles into `css/pages/*.css` |
+| `npm run watch:css` | CSS watch only (no server) |
+| `npm run content:scan` | Update `content/editable.json`: pull keys from `data-editable*` in HTML |
+| `npm run content:apply` | Write `content/editable.json` back into HTML (+ updates `content/page-meta.json`) |
 
-Подробнее по контент-пайплайну: в коде см. скрипты `scripts/apply-editable.mjs` и `scripts/scan-editable.mjs`.
+For more on the content pipeline, see the scripts `scripts/apply-editable.mjs` and `scripts/scan-editable.mjs` in the codebase.
 
-## Структура (важное)
+## Structure (Important)
 
 ```
-css/source.css              — вход Tailwind (@theme, свои классы в @layer components)
-scripts/css-bundles.mjs     — какие HTML смотреть для какого файла из css/pages/
-css/pages/*.css             — сгенерированные CSS (пересобирать через npm)
-content/                    — editable.json и вспомогательные данные страниц
-admin/                      — простая локальная админка для правок текстов в JSON
+css/source.css              — Tailwind entry file (@theme, custom classes in @layer components)
+scripts/css-bundles.mjs     — which HTML files feed which output file in css/pages/
+css/pages/*.css             — generated CSS (rebuild through npm)
+content/                    — editable.json and supporting page data
+admin/                      — simple local admin UI for editing text in JSON
 ```
 
-Список входов сборки задаётся в **`scripts/css-bundles.mjs`**: при добавлении новых страниц с Tailwind‑классами их иногда нужно туда включить — и затем выполнить `npm run build:css`.
+The build input list is defined in **`scripts/css-bundles.mjs`**. When you add new pages with Tailwind classes, you may need to include them there and then run `npm run build:css`.
 
-## Деплой
+## Deployment
 
-Сайт — набор статических файлов. Перед загрузкой на хостинг:
+The site is a set of static files. Before uploading to hosting:
 
-1. Выполнить `npm install` и `npm run build:css` в чистой среде сборки при необходимости.
-2. Залить **корень проекта без** папки `node_modules/` (она в `.gitignore`).
+1. Run `npm install` and `npm run build:css` in a clean build environment if needed.
+2. Upload the **project root without** the `node_modules/` directory (it is in `.gitignore`).
 
-Для переносимого запуска и повторного деплоя с любого сервера см. `docs/deployment.md`.
+For portable startup and repeatable deployment from any server, see `docs/deployment.md`.
 
-## Что не в репозитории
+## Not Included in the Repository
 
-Директория **`node_modules/`** ставится локально через `npm install`; в Git её нет по `.gitignore`.
+The **`node_modules/`** directory is installed locally with `npm install`; it is not stored in Git because of `.gitignore`.
 
 ---
 
-Если что‑то не запускается, проверьте версию Node (`node -v`) и что команды выполняются из корня репозитория (где лежит `package.json`).
+If something does not start, check your Node version (`node -v`) and make sure you are running the commands from the repository root (where `package.json` is located).

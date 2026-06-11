@@ -20,9 +20,24 @@
           "url": "/blog.html"
         },
         {
+          "file": "colorado-springs-roofing.html",
+          "title": "Локация: Colorado Springs roofing",
+          "url": "/colorado-springs-roofing.html"
+        },
+        {
           "file": "contacts.html",
           "title": "Контакты",
           "url": "/contacts.html"
+        },
+        {
+          "file": "denver-roofing.html",
+          "title": "Локация: Denver roofing",
+          "url": "/denver-roofing.html"
+        },
+        {
+          "file": "fort-collins-roofing.html",
+          "title": "Локация: Fort Collins roofing",
+          "url": "/fort-collins-roofing.html"
         },
         {
           "file": "reviews.html",
@@ -147,6 +162,11 @@
           "url": "/services/flat.html"
         },
         {
+          "file": "services/insurance-claims.html",
+          "title": "Roof Insurance Claim Support — Roofrx Services",
+          "url": "/services/insurance-claims.html"
+        },
+        {
           "file": "services/metal.html",
           "title": "Услуга: металл",
           "url": "/services/metal.html"
@@ -160,6 +180,16 @@
           "file": "services/residential.html",
           "title": "Услуга: жилые кровли",
           "url": "/services/residential.html"
+        },
+        {
+          "file": "services/solar.html",
+          "title": "Solar Roofing Coordination — Roofrx Services",
+          "url": "/services/solar.html"
+        },
+        {
+          "file": "services/storm-damage.html",
+          "title": "Storm Damage Roofing — Roofrx Services",
+          "url": "/services/storm-damage.html"
         }
       ]
     },

@@ -1,4 +1,4 @@
-name: Deploy to IONOS
+name: Deploy intermtnroofing.com to IONOS
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: roofrx-ionos-deploy
+  group: intermtnroofing-ionos-deploy
   cancel-in-progress: true
 
 jobs:
@@ -19,7 +19,9 @@ jobs:
       IONOS_HOST: ${{ vars.IONOS_HOST }}
       IONOS_USER: ${{ vars.IONOS_USER }}
       IONOS_PORT: ${{ vars.IONOS_PORT || '22' }}
-      IONOS_PATH: ${{ vars.IONOS_PATH }}
+      # Set IONOS_PATH_INTERMTN in GitHub Actions repo variables:
+      # /var/www/intermtnroofing.com/current
+      IONOS_PATH: ${{ vars.IONOS_PATH_INTERMTN }}
     steps:
       - uses: actions/checkout@v6
 
@@ -30,16 +32,14 @@ jobs:
 
       - run: npm ci
 
-      - run: BRAND=roofrxservices npm run apply:brand
+      - run: BRAND=intermtnroofing npm run apply:brand
 
       - run: npm run build:css
-
-      - run: docker build -t roofrx:test .
 
       - run: |
           test -n "$IONOS_HOST" || { echo "Missing IONOS_HOST GitHub Actions variable"; exit 1; }
           test -n "$IONOS_USER" || { echo "Missing IONOS_USER GitHub Actions variable"; exit 1; }
-          test -n "$IONOS_PATH" || { echo "Missing IONOS_PATH GitHub Actions variable"; exit 1; }
+          test -n "$IONOS_PATH" || { echo "Missing IONOS_PATH_INTERMTN GitHub Actions variable"; exit 1; }
 
       - uses: webfactory/ssh-agent@v0.10.0
         with:

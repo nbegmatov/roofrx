@@ -1,0 +1,13 @@
+{
+  "colors": {
+    "roof-700": "#334155",
+    "roof-800": "#1e293b",
+    "roof-900": "#0f172a",
+    "roof-accent": "#ea580c",
+    "roof-accent-hover": "#c2410c"
+  },
+  "fonts": {
+    "sans": "Inter, system-ui, sans-serif",
+    "display": "\"Bebas Neue\", sans-serif"
+  }
+}

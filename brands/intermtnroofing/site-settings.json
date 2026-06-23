@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "Intermountain Roofing",
+    "legalName": "Intermountain Roofing & Construction",
+    "domain": "intermtnroofing.com",
+    "url": "https://intermtnroofing.com"
+  },
+  "contact": {
+    "phone": {
+      "raw": "0000000000",
+      "href": "tel:+10000000000",
+      "display": "000-000-0000"
+    },
+    "email": {
+      "href": "mailto:intermtnroofing@gmail.com",
+      "display": "intermtnroofing@gmail.com"
+    }
+  }
+}

@@ -12,7 +12,9 @@
     "content:scan": "node scripts/scan-editable.mjs",
     "build:css:index": "tailwindcss -i ./css/source.css -o ./css/pages/index.css --content ./index.html --minify",
     "watch:css:all": "tailwindcss -i ./css/source.css -o ./css/pages/site.css --content './**/*.html' --watch",
-    "build:css:all": "tailwindcss -i ./css/source.css -o ./css/pages/site.css --content './**/*.html' --minify"
+    "build:css:all": "tailwindcss -i ./css/source.css -o ./css/pages/site.css --content './**/*.html' --minify",
+    "apply:brand": "node scripts/apply-brand.mjs",
+    "build:brand": "node scripts/apply-brand.mjs && node scripts/build-css.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.2.2",

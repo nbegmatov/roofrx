@@ -1,2 +1,4 @@
 node_modules/
 .DS_Store
+css/pages/
+css/brand-theme.css

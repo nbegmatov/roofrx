@@ -8,7 +8,7 @@ for (const command of [
   'npm run sync:contacts',
   'npm run build:css',
   'npm run content:scan',
-  "git diff --exit-code -- '*.html' 'js/site-modals.js' 'css/pages' 'content/pages-index.json' 'content/editable.json' 'content/site-settings.json'",
+  "git diff --exit-code -- '*.html' 'js/site-modals.js' 'content/pages-index.json' 'content/editable.json' 'content/site-settings.json'",
 ]) {
   console.log(command);
   execSync(command, { cwd: root, stdio: 'inherit' });

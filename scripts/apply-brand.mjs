@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, copyFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, copyFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -37,13 +37,5 @@ console.log(`[apply-brand] css/brand-theme.css written`);
 
 copyFileSync(join(brandDir, 'site-settings.json'), join(root, 'content', 'site-settings.json'));
 console.log(`[apply-brand] content/site-settings.json updated`);
-
-const brandImagesDir = join(brandDir, 'images');
-if (existsSync(brandImagesDir)) {
-  for (const file of readdirSync(brandImagesDir)) {
-    copyFileSync(join(brandImagesDir, file), join(root, 'images', file));
-    console.log(`[apply-brand] images/${file} updated`);
-  }
-}
 
 console.log(`[apply-brand] Brand "${brand}" applied.`);

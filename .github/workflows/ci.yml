@@ -26,5 +26,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Apply brand
+        run: BRAND=roofrxservices npm run apply:brand
+
       - name: Verify build output
         run: npm run verify

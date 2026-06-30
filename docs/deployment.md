@@ -233,6 +233,27 @@ Verify renewal timer:
 systemctl status certbot.timer
 ```
 
+### 8. Install Tailscale (VPN access)
+
+Tailscale provides secure remote access to the server without exposing additional ports. Run on the server:
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up --authkey <tskey-auth-...>
+```
+
+The auth key is a one-time key generated from the Tailscale admin console under **Settings → Keys → Generate auth key**. Use an ephemeral or reusable key as appropriate. Never commit the key itself — store it in the password manager.
+
+After joining, the server appears in the Tailscale admin console at [login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines) under the account in `docs/accounts.md`.
+
+To verify it joined:
+
+```bash
+tailscale status
+```
+
+Tailscale is not required for GitHub Actions deploys (those use the public SSH key over port 22). It provides an out-of-band admin path that works even if the public IP or nginx is misconfigured.
+
 ## Configure GitHub Actions for this server
 
 In GitHub repository settings, configure:

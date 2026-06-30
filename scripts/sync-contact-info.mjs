@@ -106,7 +106,7 @@ if (relPaths.includes(`js/${modalScriptName}`)) {
 }
 
 const modalScriptPath = join(root, 'js', modalScriptName);
-const modalScriptVersion = createHash('sha1').update(readFileSync(modalScriptPath, 'utf8')).digest('hex').slice(0, 10);
+const modalScriptVersion = createHash('sha1').update(readFileSync(modalScriptPath, 'utf8').replace(/\r\n/g, '\n')).digest('hex').slice(0, 10);
 const htmlRegexReplacements = [
   [/src="js\/site-modals(?:-ga4)?\.js(?:\?v=[^"]+)?"/g, `src="js/${modalScriptName}?v=${modalScriptVersion}"`],
   [/src="\.\.\/js\/site-modals(?:-ga4)?\.js(?:\?v=[^"]+)?"/g, `src="../js/${modalScriptName}?v=${modalScriptVersion}"`],

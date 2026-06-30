@@ -16,7 +16,8 @@ jobs:
     permissions:
       contents: read
     env:
-      IONOS_HOST: ${{ vars.IONOS_HOST }}
+      IONOS_HOST: ${{ vars.IONOS_HOST }}           # kept for rollback reference; CI now uses IONOS_TAILSCALE_IP
+      IONOS_TAILSCALE_IP: ${{ vars.IONOS_TAILSCALE_IP }}
       IONOS_USER: ${{ vars.IONOS_USER }}
       IONOS_PORT: ${{ vars.IONOS_PORT || '22' }}
       # Set IONOS_PATH_INTERMTN in GitHub Actions repo variables:
@@ -37,9 +38,15 @@ jobs:
       - run: npm run build:css
 
       - run: |
-          test -n "$IONOS_HOST" || { echo "Missing IONOS_HOST GitHub Actions variable"; exit 1; }
+          test -n "$IONOS_TAILSCALE_IP" || { echo "Missing IONOS_TAILSCALE_IP GitHub Actions variable"; exit 1; }
           test -n "$IONOS_USER" || { echo "Missing IONOS_USER GitHub Actions variable"; exit 1; }
           test -n "$IONOS_PATH" || { echo "Missing IONOS_PATH_INTERMTN GitHub Actions variable"; exit 1; }
+
+      - uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
 
       - uses: webfactory/ssh-agent@v0.10.0
         with:
@@ -47,10 +54,10 @@ jobs:
 
       - run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -p "$IONOS_PORT" "$IONOS_HOST" >> ~/.ssh/known_hosts
+          ssh-keyscan -p "$IONOS_PORT" "$IONOS_TAILSCALE_IP" >> ~/.ssh/known_hosts
 
       - run: |
-          ssh -p "$IONOS_PORT" "$IONOS_USER@$IONOS_HOST" "mkdir -p \"$IONOS_PATH\""
+          ssh -p "$IONOS_PORT" "$IONOS_USER@$IONOS_TAILSCALE_IP" "mkdir -p \"$IONOS_PATH\""
 
       - run: |
           rsync -rlptDz --delete --delete-excluded -e "ssh -p $IONOS_PORT" \
@@ -66,4 +73,4 @@ jobs:
             --exclude "postcss.config.js" \
             --exclude "tailwind.config.js" \
             --exclude "README.md" \
-            ./ "$IONOS_USER@$IONOS_HOST:$IONOS_PATH/"
+            ./ "$IONOS_USER@$IONOS_TAILSCALE_IP:$IONOS_PATH/"

@@ -233,26 +233,40 @@ Verify renewal timer:
 systemctl status certbot.timer
 ```
 
-### 8. Install Tailscale (VPN access)
+### 8. Install Tailscale on the server (one-time)
 
-Tailscale provides secure remote access to the server without exposing additional ports. Run on the server:
+Tailscale is used for two purposes:
+
+1. **CI/CD access** — GitHub Actions joins the tailnet ephemerally on every deploy run and connects to the server via its Tailscale IP, keeping SSH off the public internet.
+2. **Admin access** — out-of-band SSH for manual server work, independent of the public IP or nginx state.
+
+Install on the server with a one-time auth key:
 
 ```bash
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up --authkey <tskey-auth-...>
 ```
 
-The auth key is a one-time key generated from the Tailscale admin console under **Settings → Keys → Generate auth key**. Use an ephemeral or reusable key as appropriate. Never commit the key itself — store it in the password manager.
+The auth key is generated from the Tailscale admin console under **Settings → Keys → Generate auth key**. Never commit the key — store it in the password manager.
 
-After joining, the server appears in the Tailscale admin console at [login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines) under the account in `docs/accounts.md`.
+After joining, the server appears at [login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines). Note the assigned Tailscale IP (e.g. `100.x.y.z`) — this becomes the `IONOS_TAILSCALE_IP` repository variable.
 
-To verify it joined:
+Verify it joined:
 
 ```bash
 tailscale status
 ```
 
-Tailscale is not required for GitHub Actions deploys (those use the public SSH key over port 22). It provides an out-of-band admin path that works even if the public IP or nginx is misconfigured.
+#### GitHub Actions OAuth credentials (CI access)
+
+GitHub Actions joins the tailnet per-run using an OAuth client scoped to `tag:ci`. The credentials are stored as repository secrets:
+
+- `TS_OAUTH_CLIENT_ID` — OAuth client ID from Tailscale admin console
+- `TS_OAUTH_SECRET` — OAuth client secret (treat as a password; never commit)
+
+Generate these at [login.tailscale.com/admin/settings/oauth](https://login.tailscale.com/admin/settings/oauth). Scope the client to `tag:ci` so ephemeral runner nodes are automatically tagged and ACLs can restrict what they can reach.
+
+The `tailscale/github-action@v3` step in both deploy workflows handles joining the tailnet. After it runs, the runner can reach the server at `$IONOS_TAILSCALE_IP` over its normal SSH port.
 
 ## Configure GitHub Actions for this server
 
@@ -260,19 +274,23 @@ In GitHub repository settings, configure:
 
 ### Repository variables
 
-- `IONOS_HOST=74.208.208.140`
+- `IONOS_HOST=74.208.208.140` — public IP; kept for rollback but no longer used by CI
+- `IONOS_TAILSCALE_IP=100.x.y.z` — server's Tailscale IP; CI connects here
 - `IONOS_USER=deploy`
 - `IONOS_PORT=22`
 - `IONOS_PATH=/var/www/roofrxservices.com/current`
+- `IONOS_PATH_INTERMTN=/var/www/intermtnroofing.com/current`
 
-### Repository secret
+### Repository secrets
 
-- `IONOS_SSH_KEY`
+- `IONOS_SSH_KEY` — private key for the deploy user; used by `webfactory/ssh-agent`
+- `TS_OAUTH_CLIENT_ID` — Tailscale OAuth client ID scoped to `tag:ci`
+- `TS_OAUTH_SECRET` — Tailscale OAuth client secret
 
-Set `IONOS_SSH_KEY` to the **private key contents** of the deploy key, for example the contents of:
+Set `IONOS_SSH_KEY` to the **private key contents** of the deploy key:
 
 ```text
-~/.ssh/roofrx
+~/.ssh/roofrx  (or ~/.ssh/ionos_deploy)
 ```
 
 If the workflow uses `deploy`, that user must be able to write to `IONOS_PATH`.

@@ -268,6 +268,52 @@ Generate these at [login.tailscale.com/admin/settings/oauth](https://login.tails
 
 The `tailscale/github-action@v3` step in both deploy workflows handles joining the tailnet. After it runs, the runner can reach the server at `$IONOS_TAILSCALE_IP` over its normal SSH port.
 
+#### UFW hardening — SSH only via Tailscale
+
+Port 22 is **closed to the public internet**. SSH is only accessible via the Tailscale interface (`tailscale0`). The active UFW rules on the server are:
+
+```
+80,443/tcp (Nginx Full)    ALLOW IN    Anywhere
+22/tcp on tailscale0       ALLOW IN    Anywhere
+```
+
+To reproduce this from a clean server (after Tailscale is installed and joined):
+
+```bash
+# Allow SSH only on the Tailscale interface
+ufw allow in on tailscale0 to any port 22 proto tcp
+# Remove the broad public-internet SSH rule
+ufw delete allow OpenSSH
+ufw reload
+ufw status verbose
+```
+
+#### How to SSH into the server
+
+Always connect via the Tailscale IP, never the public IP:
+
+```bash
+ssh -i ~/.ssh/roofrx root@100.73.70.66
+```
+
+Your workstation must be connected to the same Tailscale network. If you are not yet connected, run `tailscale up` locally first.
+
+#### Rollback if Tailscale goes down
+
+If the server loses its Tailscale connection and you are locked out:
+
+1. Log in via the IONOS Cloud Panel at [cloud.ionos.com](https://cloud.ionos.com) and open the server console (VNC/console access does not use SSH).
+2. From the console, run:
+   ```bash
+   tailscale up        # re-authenticate if the key expired
+   # or, as a last resort, temporarily re-open public SSH:
+   ufw allow OpenSSH
+   ufw reload
+   ```
+3. Once access is restored, reconnect Tailscale and re-harden UFW by removing the public OpenSSH rule again.
+
+Never leave the public SSH rule open longer than necessary.
+
 ## Configure GitHub Actions for this server
 
 In GitHub repository settings, configure:

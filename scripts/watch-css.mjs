@@ -21,7 +21,7 @@ for (const page of cssBundles) {
     '--watch',
     ...page.content.flatMap((f) => ['--content', join(root, f)]),
   ];
-  const child = spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: false });
+  const child = spawn(cmd, args, { stdio: 'inherit', cwd: root, shell: process.platform === 'win32' });
   children.push(child);
 }
 

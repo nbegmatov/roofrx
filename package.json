@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "predev": "npm run build:css",
-    "dev": "concurrently -k -n css,web -c green,magenta \"npm run watch:css\" \"live-server . --port=5173 --open=/index.html --wait=200\"",
+    "dev": "concurrently -k -n css,web -c green,magenta \"npm run watch:css\" \"node scripts/dev-server.mjs\"",
+    "dev:roofrx": "concurrently -k -n css,web -c green,magenta \"npm run watch:css\" \"node scripts/dev-roofrx.mjs\"",
+    "dev:intermtn": "concurrently -k -n css,web -c cyan,magenta \"npm run watch:css\" \"node scripts/dev-intermtn.mjs\"",
     "watch:css": "node scripts/watch-css.mjs",
     "build:css": "node scripts/build-css.mjs",
     "sync:contacts": "node scripts/sync-contact-info.mjs",

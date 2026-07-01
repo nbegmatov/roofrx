@@ -52,11 +52,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.IONOS_SSH_KEY }}
 
-      - name: Tailscale connectivity check
-        run: |
-          tailscale status
-          tailscale ping --c 3 "$IONOS_TAILSCALE_IP" || echo "ping failed"
-
       - run: |
           mkdir -p ~/.ssh
           ssh-keyscan -p "$IONOS_PORT" "$IONOS_TAILSCALE_IP" >> ~/.ssh/known_hosts

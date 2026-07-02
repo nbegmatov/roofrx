@@ -2,6 +2,15 @@
 
 This doc exists so any AI agent (Claude Code, a future model, a different tool entirely) can pick up this project with full context, without the owner having to re-explain it. Read this before `CLAUDE.md` and `docs/deployment.md` — those cover the codebase and infra; this covers the business.
 
+## Technical documentation index
+
+Start here, then follow links for the depth you need:
+
+- [docs/architecture.md](architecture.md) — System overview, network topology, CI/CD pipeline, dual-brand build system, and a clear list of what is live vs. what is still planned.
+- [docs/infrastructure.md](infrastructure.md) — Phase-by-phase VPS reproduction guide. Phase 1 (Tailscale + SSH hardening) is complete; Phases 2–5 are TODO stubs that get filled in as tickets close.
+- [docs/runbook.md](runbook.md) — Day-to-day and emergency operational procedures: checking service status, deploying manually, rolling back, and recovering from a locked-out VPS.
+- [docs/secrets-registry.md](secrets-registry.md) — Every GitHub secret and variable, what each contains, which workflows use it, and what breaks if it is missing.
+
 ## Company structure
 
 RoofRx Services (`roofrxservices.com`) is the primary brand and the only one that should receive differentiated positioning, messaging, content, or strategy. Intermountain Roofing (`intermtnroofing.com`) is a backup/insurance brand only — a near-identical clone with the logo and brand name swapped, sharing the same codebase via `scripts/apply-brand.mjs`. Any RoofRx decision applies identically to Intermtn unless the owner explicitly says otherwise. Never propose separate strategy or content for Intermtn — that's a signal something has gone off track.

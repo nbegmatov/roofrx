@@ -5,7 +5,7 @@ Procedures for day-to-day operations and emergencies. Written for an agent or pe
 **Before running any command on the VPS:** Connect your workstation to Tailscale (`tailscale up`) and SSH in:
 
 ```bash
-ssh -i ~/.ssh/roofrx root@100.73.70.66
+ssh -i ~/.ssh/roofrx deploy@100.73.70.66
 ```
 
 ---
@@ -159,7 +159,7 @@ If you need to roll back urgently and cannot wait for a workflow run, the previo
 
 ### VPS is unreachable via Tailscale
 
-If `ssh root@100.73.70.66` times out or refuses connection, Tailscale on the server may have stopped.
+If `ssh deploy@100.73.70.66` times out or refuses connection, Tailscale on the server may have stopped.
 
 **Do not try to re-open port 22 publicly unless all other options are exhausted.**
 

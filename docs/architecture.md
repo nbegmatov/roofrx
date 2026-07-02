@@ -6,14 +6,17 @@ This document describes every machine, network boundary, code path, and build de
 
 ## System overview
 
-Two separate IONOS products are in use. They are not the same physical or virtual machine:
+One IONOS VPS runs everything:
 
-| Role | Product | IP / address |
-|---|---|---|
-| Web hosting | IONOS VPS (Ubuntu 24.04) | `74.208.208.140` (public) / `100.73.70.66` (Tailscale) |
-| Domain / DNS | IONOS domain management | `roofrxservices.com`, `intermtnroofing.com` |
+| Role | Details |
+|---|---|
+| Machine | IONOS VPS — Ubuntu 24.04 |
+| Public IP | `74.208.208.140` |
+| Tailscale IP | `100.73.70.66` |
+| Static sites | `/var/www/roofrxservices.com/current` and `/var/www/intermtnroofing.com/current` |
+| Future backend | Node.js API + PostgreSQL (not yet built — see below) |
 
-**Why one machine plays two roles (for now):** The VPS currently runs Nginx and serves both static sites. Future backend services (Node.js API, PostgreSQL) will also run here. When backend traffic warrants isolation, the static sites can be moved to IONOS shared hosting or a CDN, but that separation is not planned for launch.
+The VPS serves both static sites today (via Nginx) and will also run the backend API and database when those are built. There is no separate hosting machine — a single VPS is the entire production environment.
 
 The domain `roofrxservices.com` — not `roofrx.com` — is the primary brand domain. This has historically caused errors. Verify it in every DNS record, environment variable, and config file you touch.
 
@@ -47,7 +50,7 @@ Public internet ──► VPS:80 (HTTP)   ─► Nginx ─► static files
 **How a human admin gets in:** Connect your workstation to Tailscale (`tailscale up`), then SSH to the Tailscale IP directly:
 
 ```bash
-ssh -i ~/.ssh/roofrx root@100.73.70.66
+ssh -i ~/.ssh/roofrx deploy@100.73.70.66
 ```
 
 **Emergency fallback (no Tailscale):** IONOS Cloud Panel at cloud.ionos.com provides VNC/console access that does not go through SSH. See [docs/runbook.md](runbook.md) for the full emergency procedure.
@@ -187,7 +190,7 @@ npm run dev:intermtn  # serves Intermtn brand on localhost
 | Process manager | PM2 | RRX-011 | Manages Node.js backend process |
 | Database | PostgreSQL | RRX-010 | Schema TBD |
 | API subdomain | `api.roofrxservices.com` | RRX-009 | Nginx vhost + Certbot SSL, not yet configured |
-| Hardening | fail2ban, unattended-upgrades, deploy user | RRX-008 | See [docs/infrastructure.md](infrastructure.md) |
+| Hardening | fail2ban, unattended-upgrades | RRX-008 | See [docs/infrastructure.md](infrastructure.md) |
 
 ### Present in repo but not in production runtime
 
@@ -204,7 +207,6 @@ If you are a new agent picking up this repo, be aware of the following before to
 - **No PM2 config exists.** Process management for Node.js services is planned under RRX-011.
 - **Nginx is not yet installed on the VPS.** Static site files are deployed to the VPS but Nginx configuration and SSL (Certbot) for the main domains and the API subdomain are in the RRX-009 backlog.
 - **fail2ban and unattended-upgrades are not yet installed.** Basic OS hardening (RRX-008) has not been completed.
-- **The deploy user is still root.** A scoped `deploy` user is planned but the server currently uses root for SSH.
 - **GoHighLevel and Google Workspace are not yet integrated.** See `docs/accounts.md`.
 
 Cross-check ticket status with the owner before assuming any of these items have been completed — the kanban board does not sync automatically to this repo.

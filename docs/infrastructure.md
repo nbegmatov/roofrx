@@ -145,7 +145,7 @@ chmod 700 /home/deploy/.ssh
 chmod 600 /home/deploy/.ssh/authorized_keys
 ```
 
-Update the `IONOS_USER` GitHub Actions variable from `root` to `deploy` after verifying the user can write to all web roots and restart services.
+The `IONOS_USER` GitHub Actions variable has already been updated to `deploy`. Once the OS-level user is created and the SSH key is in place, CI will connect as `deploy` automatically.
 
 ---
 
@@ -282,13 +282,7 @@ Your workstation must be connected to Tailscale. If not:
 tailscale up
 ```
 
-Then:
-
-```bash
-ssh -i ~/.ssh/roofrx root@100.73.70.66
-```
-
-Once Phase 2 is complete and the `deploy` user is created, switch to:
+Then connect as `deploy`:
 
 ```bash
 ssh -i ~/.ssh/roofrx deploy@100.73.70.66

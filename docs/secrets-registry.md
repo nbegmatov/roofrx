@@ -85,7 +85,7 @@ This is the address assigned to the VPS when it joined the Tailscale network. If
 
 | Field | Value |
 |---|---|
-| **Contains** | SSH username used by CI to connect to the VPS (currently `root`; will become `deploy` after RRX-008) |
+| **Contains** | SSH username used by CI to connect to the VPS (`deploy`) |
 | **Used by** | `deploy-ionos.yml`, `deploy-ionos-intermtnroofing.yml` |
 | **If missing** | Workflow fails the validation step; SSH command has no username |
 | **Purpose** | The OS user under which rsync writes files to the VPS |

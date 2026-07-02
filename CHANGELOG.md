@@ -1,6 +1,10 @@
 # Changelog
 
 ## 2026-07-02
+- infra(RRX-009): document Nginx + Certbot state (already configured); expand roofrxservices.com cert to cover www subdomain (`certbot --expand`); renewal timer confirmed active.
+- chore: delete merged/orphaned remote branches (docs/infrastructure-documentation, security/ci-over-tailscale).
+
+## 2026-07-02
 - infra(RRX-008): complete OS hardening — fail2ban installed with sshd jail (maxretry=5, bantime=1h), unattended-upgrades confirmed active, deploy user sudo scoped to nginx reload/restart and pm2 restart only via /etc/sudoers.d/deploy.
 - infra: separate CI/CD and admin SSH keys — ionos_deploy key now exclusively in deploy authorized_keys; roofrx key in both root and deploy; web root ownership fixed to deploy:deploy so rsync succeeds.
 - docs: update infrastructure.md Phase 2 with actual commands and verified output; update architecture.md to reflect nginx installed (vhost config pending RRX-009).

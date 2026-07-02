@@ -171,7 +171,9 @@ Tested:
 
 **Note — PM2 path:** PM2 installs to `/usr/local/bin/pm2` via npm, not `/usr/bin/pm2`. Verify with `which pm2` after RRX-011 and update this file if the path differs.
 
-**Pending:** Removal of `deploy` from the `sudo` group is a separate approval step. Full restriction takes effect only after that removal.
+Deploy removed from `sudo` group (`gpasswd -d deploy sudo`). Verified:
+- `sudo /usr/bin/systemctl reload nginx` as `deploy` → exit 0 (NOPASSWD rule fires)
+- `sudo -n apt update` as `deploy` → exit 1 (no matching rule, truly denied)
 
 ### 2.4 SSH key separation
 
@@ -198,64 +200,82 @@ CI/CD verified end-to-end: GitHub Actions deploy workflow connected as `deploy` 
 
 ---
 
-## Phase 3 — Nginx + SSL (TODO — RRX-009)
+## Phase 3 — Nginx + SSL (RRX-009)
 
-**Status: NOT STARTED**
+**Status: COMPLETE** (completed prior to 2026-07-02; cert www coverage fixed 2026-07-02)
 
-This phase installs the web server and issues TLS certificates for both public domains and the API subdomain.
+Nginx 1.24.0, Certbot 2.9.0, and `python3-certbot-nginx` were installed on the server prior to this session. Site directories and vhosts were already configured. This section records the state as found and the one fix applied.
 
-### 3.1 Install Nginx and Certbot
+### 3.1 Nginx and Certbot
+
+Already installed on the server:
 
 ```bash
-# TODO: fill in after RRX-009 is executed
-apt install -y nginx certbot python3-certbot-nginx
-systemctl enable --now nginx
+nginx -v        # nginx/1.24.0 (Ubuntu)
+certbot --version  # certbot 2.9.0
 ```
 
-### 3.2 Create site directories
+### 3.2 Site directories
 
-```bash
-# TODO: fill in after RRX-009 is executed
-mkdir -p /var/www/roofrxservices.com/current
-mkdir -p /var/www/intermtnroofing.com/current
-chown -R deploy:deploy /var/www/roofrxservices.com /var/www/intermtnroofing.com
-chmod -R 755 /var/www/roofrxservices.com /var/www/intermtnroofing.com
+Already created with correct ownership (established in Phase 2.4):
+
+```
+/var/www/roofrxservices.com/current   — owned by deploy:deploy
+/var/www/intermtnroofing.com/current  — owned by deploy:deploy
 ```
 
 ### 3.3 Nginx vhost for roofrxservices.com
 
-```bash
-# TODO: fill in actual config path and content after RRX-009 is executed
-# Reference config from docs/deployment.md:
-# /etc/nginx/sites-available/roofrxservices.com
-```
+`/etc/nginx/sites-available/roofrxservices.com` — already in place. Key config:
 
-See [docs/deployment.md](deployment.md) for the recommended Nginx configuration block (covers HTTP, static file caching, and `try_files` routing).
+```nginx
+server {
+    server_name roofrxservices.com www.roofrxservices.com;
+    root /var/www/roofrxservices.com/current;
+    index index.html;
+
+    location / { try_files $uri $uri/ =404; }
+    location = /favicon.ico { log_not_found off; access_log off; }
+    location ~* \.(css|js|svg|png|jpg|jpeg|gif|webp|ico)$ {
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800";
+        try_files $uri =404;
+    }
+    location ~* \.html$ {
+        add_header Cache-Control "no-cache";
+        try_files $uri =404;
+    }
+    # HTTPS and HTTP→HTTPS redirect blocks managed by Certbot
+}
+```
 
 ### 3.4 Nginx vhost for intermtnroofing.com
 
-```bash
-# TODO: mirror the roofrxservices.com config with the correct server_name and root path
-```
+`/etc/nginx/sites-available/intermtnroofing.com` — same structure, `server_name intermtnroofing.com www.intermtnroofing.com`, root `/var/www/intermtnroofing.com/current`.
 
 ### 3.5 Nginx vhost for api.roofrxservices.com
 
+Not yet created — depends on RRX-011 (Node.js backend). DNS already resolves `api.roofrxservices.com → 74.208.208.140`. Add vhost and cert when backend is ready.
+
+### 3.6 TLS certificates
+
+Certificates issued by Certbot and managed automatically:
+
+| Domain | Covers | Expiry | Status |
+|---|---|---|---|
+| `roofrxservices.com` | `roofrxservices.com`, `www.roofrxservices.com` | 2026-09-05 | Valid (86 days at time of audit) |
+| `intermtnroofing.com` | `intermtnroofing.com`, `www.intermtnroofing.com` | 2026-09-27 | Valid |
+
+The `roofrxservices.com` cert originally covered only the apex domain. Fixed by expanding it to include `www`:
+
 ```bash
-# TODO: configure reverse proxy to Node.js backend (port TBD) after RRX-011 is ready
+certbot --nginx -d roofrxservices.com -d www.roofrxservices.com --expand
 ```
 
-### 3.6 Issue TLS certificates
+Renewal timer confirmed active, next trigger within 24h of audit:
 
 ```bash
-# TODO: fill in after DNS is pointed and propagated
-certbot --nginx \
-  -d roofrxservices.com -d www.roofrxservices.com \
-  -d intermtnroofing.com -d www.intermtnroofing.com
-
-# API subdomain cert issued separately after backend vhost is in place
-certbot --nginx -d api.roofrxservices.com
-
-systemctl status certbot.timer
+systemctl is-active certbot.timer   # active
 ```
 
 ---

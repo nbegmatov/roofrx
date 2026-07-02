@@ -185,7 +185,7 @@ npm run dev:intermtn  # serves Intermtn brand on localhost
 
 | Layer | Technology | Ticket | Notes |
 |---|---|---|---|
-| Web server | Nginx + Certbot | RRX-009 | Will serve static files and proxy `api.roofrxservices.com`; not yet installed |
+| Web server | Nginx | RRX-009 | Installed and active; vhost config and Certbot SSL still needed |
 | Backend API | Node.js (runtime) | RRX-011 | Will serve `api.roofrxservices.com` |
 | Process manager | PM2 | RRX-011 | Manages Node.js backend process |
 | Database | PostgreSQL | RRX-010 | Schema TBD |
@@ -204,8 +204,8 @@ If you are a new agent picking up this repo, be aware of the following before to
 - **No backend API exists.** `api.roofrxservices.com` is planned but not yet set up. Do not build anything that assumes it is reachable.
 - **No PostgreSQL instance exists.** Any schema, migration, or ORM work is premature until RRX-010.
 - **No PM2 config exists.** Process management for Node.js services is planned under RRX-011.
-- **Nginx is not yet installed on the VPS.** Static site files are deployed to the VPS but Nginx configuration and SSL (Certbot) for the main domains and the API subdomain are in the RRX-009 backlog.
-- **fail2ban and unattended-upgrades are not yet installed.** Basic OS hardening (RRX-008) has not been completed.
+- **Nginx is installed but not yet configured.** Nginx is running on the VPS but no vhosts exist yet — no domain is being served. Vhost config and Certbot SSL are the remaining RRX-009 work.
+- **fail2ban and unattended-upgrades are installed** (RRX-008 complete). Deploy user sudo is scoped. Removal of `deploy` from the `sudo` group is a pending approval step.
 - **GoHighLevel and Google Workspace are not yet integrated.** See `docs/accounts.md`.
 
 Cross-check ticket status with the owner before assuming any of these items have been completed — the kanban board does not sync automatically to this repo.

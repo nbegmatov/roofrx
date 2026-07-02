@@ -94,20 +94,22 @@ In the Tailscale admin console under **Settings → OAuth clients**, create a cl
 
 ---
 
-## Phase 2 — OS hardening (TODO — RRX-008)
+## Phase 2 — OS hardening (RRX-008)
 
-**Status: NOT STARTED**
-
-Complete this phase before connecting any public-facing backend services to the VPS.
+**Status: COMPLETE** (2026-07-02)
 
 ### 2.1 Install and configure fail2ban
 
-```bash
-# TODO: fill in after RRX-008 is executed
-apt install -y fail2ban
+`unattended-upgrades` was already present on the base image. `fail2ban` was not.
 
-# Create a local override for the sshd jail
-cat > /etc/fail2ban/jail.d/sshd.local <<'EOF'
+```bash
+apt install -y fail2ban
+systemctl enable --now fail2ban
+```
+
+Created `/etc/fail2ban/jail.d/sshd.local`:
+
+```ini
 [sshd]
 enabled = true
 port = 22
@@ -116,36 +118,83 @@ logpath = /var/log/auth.log
 maxretry = 5
 bantime = 3600
 findtime = 600
-EOF
+```
 
-systemctl enable --now fail2ban
+```bash
+systemctl restart fail2ban
 fail2ban-client status sshd
+```
+
+Verified output:
+
+```
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     0
+|  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
+`- Actions
+   |- Currently banned: 0
+   |- Total banned:     0
+   `- Banned IP list:
 ```
 
 ### 2.2 Enable unattended security upgrades
 
-```bash
-# TODO: fill in after RRX-008 is executed
-apt install -y unattended-upgrades
-dpkg-reconfigure --priority=low unattended-upgrades
-# Confirm automatic reboot behavior and email notifications match operational requirements
-```
-
-### 2.3 Create a scoped deploy user
+Already installed. Re-ran reconfigure to confirm it is enabled:
 
 ```bash
-# TODO: fill in after RRX-008 is executed
-adduser deploy
-# Grant only the permissions needed for rsync and service restarts
-# Do NOT give full sudo — scope it to specific commands via /etc/sudoers.d/deploy
-mkdir -p /home/deploy/.ssh
-cp /root/.ssh/authorized_keys /home/deploy/.ssh/authorized_keys
-chown -R deploy:deploy /home/deploy/.ssh
-chmod 700 /home/deploy/.ssh
-chmod 600 /home/deploy/.ssh/authorized_keys
+DEBIAN_FRONTEND=noninteractive dpkg-reconfigure --priority=low unattended-upgrades
+systemctl status unattended-upgrades
 ```
 
-The `IONOS_USER` GitHub Actions variable has already been updated to `deploy`. Once the OS-level user is created and the SSH key is in place, CI will connect as `deploy` automatically.
+Service confirmed `active (running)` since initial server provisioning.
+
+### 2.3 Scope deploy user sudo
+
+The `deploy` user already existed (uid=1000, in `sudo` group). Wrote a scoped sudoers drop-in restricting passwordless sudo to Nginx reload/restart and PM2 restart (inert until PM2 is installed in RRX-011):
+
+```bash
+tee /etc/sudoers.d/deploy << 'EOF'
+# Scoped sudo for the deploy user — service restarts only (RRX-008)
+deploy ALL=(root) NOPASSWD: /usr/bin/systemctl reload nginx, /usr/bin/systemctl restart nginx, /usr/bin/pm2 restart all, /usr/bin/pm2 reload all
+EOF
+chmod 440 /etc/sudoers.d/deploy
+visudo -c
+```
+
+`visudo -c` output: all files parsed OK.
+
+Tested:
+- `sudo /usr/bin/systemctl reload nginx` as `deploy` → exit 0 (NOPASSWD granted, nginx reloaded)
+- `sudo -n apt update` as `deploy` → exit 1 (password required — not in scoped allow list)
+
+**Note — PM2 path:** PM2 installs to `/usr/local/bin/pm2` via npm, not `/usr/bin/pm2`. Verify with `which pm2` after RRX-011 and update this file if the path differs.
+
+**Pending:** Removal of `deploy` from the `sudo` group is a separate approval step. Full restriction takes effect only after that removal.
+
+### 2.4 SSH key separation
+
+Separated admin and CI/CD SSH keys:
+
+| Key | Purpose | Authorized on |
+|---|---|---|
+| `roofrx` (`~/.ssh/roofrx`) | Human admin SSH | `root`, `deploy` |
+| `ionos_deploy` (`~/.ssh/ionos_deploy`) | CI/CD only (`IONOS_SSH_KEY` secret) | `deploy` only |
+
+```bash
+# Add ionos_deploy public key to deploy authorized_keys
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJtKNpicnZep1+/7KVQXSERSBlI0HU8V2KNen7W/HTex ionos-deploy" \
+  >> /home/deploy/.ssh/authorized_keys
+
+# Remove ionos_deploy from root (CI key must not reach root)
+sed -i "/ionos-deploy/d" /root/.ssh/authorized_keys
+
+# Fix web root ownership so deploy user can write files
+chown -R deploy:deploy /var/www/roofrxservices.com /var/www/intermtnroofing.com
+```
+
+CI/CD verified end-to-end: GitHub Actions deploy workflow connected as `deploy` using `ionos_deploy` key and completed successfully.
 
 ---
 

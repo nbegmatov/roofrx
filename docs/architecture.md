@@ -178,7 +178,6 @@ npm run dev:intermtn  # serves Intermtn brand on localhost
 | Markup | Static HTML | Hand-authored, no framework |
 | Styling | Tailwind CSS v4 | Compiled via `@tailwindcss/cli`; no runtime JS framework |
 | Build | Node.js 24 (build-time only) | Node is not in the runtime; it only builds CSS and runs scripts |
-| Web server | Nginx on VPS | Serves static files from `/var/www/<domain>/current` |
 | VPN | Tailscale | Secures SSH and CI/CD access to the VPS |
 | CI/CD | GitHub Actions | Three workflows; see CI/CD section above |
 
@@ -186,15 +185,15 @@ npm run dev:intermtn  # serves Intermtn brand on localhost
 
 | Layer | Technology | Ticket | Notes |
 |---|---|---|---|
+| Web server | Nginx + Certbot | RRX-009 | Will serve static files and proxy `api.roofrxservices.com`; not yet installed |
 | Backend API | Node.js (runtime) | RRX-011 | Will serve `api.roofrxservices.com` |
 | Process manager | PM2 | RRX-011 | Manages Node.js backend process |
 | Database | PostgreSQL | RRX-010 | Schema TBD |
-| API subdomain | `api.roofrxservices.com` | RRX-009 | Nginx vhost + Certbot SSL, not yet configured |
 | Hardening | fail2ban, unattended-upgrades | RRX-008 | See [docs/infrastructure.md](infrastructure.md) |
 
 ### Present in repo but not in production runtime
 
-The repo contains a `Dockerfile`, `docker-compose.yml`, and `nginx/default.conf`. These are valid for local testing and are used as a CI validation step (`docker build -t roofrx:test .`) but are **not** the runtime on the VPS. Production uses host-level Nginx, not Docker.
+The repo contains a `Dockerfile`, `docker-compose.yml`, and `nginx/default.conf`. These are valid for local testing and are used as a CI validation step (`docker build -t roofrx:test .`) but are **not** the current runtime on the VPS. When RRX-009 completes, production will use host-level Nginx — not Docker.
 
 ---
 
